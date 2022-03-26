@@ -32,9 +32,7 @@ namespace OopLab
             this.pnlTop = new System.Windows.Forms.Panel();
             this.btnMenu = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
-            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -62,21 +60,11 @@ namespace OopLab
             // 
             // pnlMain
             // 
-            this.pnlMain.Controls.Add(this.label1);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 62);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1136, 599);
             this.pnlMain.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(185, 180);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
             // 
             // Form1
             // 
@@ -94,8 +82,6 @@ namespace OopLab
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Board Game";
             this.pnlTop.ResumeLayout(false);
-            this.pnlMain.ResumeLayout(false);
-            this.pnlMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -105,7 +91,6 @@ namespace OopLab
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Label label1;
     }
 }
 
