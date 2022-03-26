@@ -15,6 +15,15 @@ namespace OopLab
         public int difficultyLevel;
         Panel pnlMenu;
         GroupBox difficultyGroupBox;
+        RadioButton easyButton = new RadioButton();
+        RadioButton mediumButton = new RadioButton();
+        RadioButton hardButton = new RadioButton();
+        RadioButton customButton = new RadioButton();
+        TextBox txtFirstVal = new TextBox();
+        TextBox txtSecondVal = new TextBox();
+        public int firstVal;
+        public int secondVal;
+
 
         public Form1()
         {
@@ -24,11 +33,49 @@ namespace OopLab
             pnlMenu.BackColor = Color.FromArgb(47, 47, 47);
             pnlMenu.AutoSize = false;
             pnlMenu.Size = new Size(634, 364);
-
             difficultyGroupBox = new GroupBox();
             difficultyGroupBox.AutoSize = true;
             difficultyGroupBox.Text = "";
-            difficultyGroupBox.Location = new Point(100, 100);
+            difficultyGroupBox.Location = new Point(50, 100);
+            txtFirstVal.TextChanged += new EventHandler(firstVal_Text_Changed);
+            txtSecondVal.TextChanged += new EventHandler(secondVal_Text_Changed);
+        }
+
+        private void secondVal_Text_Changed(object sender, EventArgs e)
+        {
+            saveSecondValSetting();
+        }
+
+        private void saveSecondValSetting()
+        {
+            Properties.Settings.Default.customSecVal = Convert.ToInt32(txtSecondVal.Text);
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void firstVal_Text_Changed(object sender, EventArgs e)
+        {
+            saveFirstValSetting();
+        }
+
+        private void saveFirstValSetting()
+        {
+            Properties.Settings.Default.customFirstVal = Convert.ToInt32(txtFirstVal.Text);
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            getDifficultySettings();
+            getValueSettings();
+
+        }
+
+        private void getValueSettings()
+        {
+            txtFirstVal.Text = Properties.Settings.Default.customFirstVal.ToString();
+            txtSecondVal.Text = Properties.Settings.Default.customSecVal.ToString();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -37,22 +84,18 @@ namespace OopLab
             Label label = new Label();
             label.AutoSize = true;
             label.Text = "DIFFICULTY LEVEL";
-            label.Font = new Font("Viner Hand ITC", 20);
+            label.Font = new Font("Bauhaus 93", 18);
             label.ForeColor = Color.White;
-            label.Location = new Point(130, 50);
+            label.Location = new Point(60, 50);
 
 
-
-            RadioButton easyButton = new RadioButton();
             easyButton.ForeColor = Color.White;
             easyButton.Font = new Font(easyButton.Font.FontFamily, 13);
             easyButton.Location = new Point(60, 20);
             easyButton.Name = "btnEasy";
             easyButton.Text = "Easy";
-            easyButton.Checked = true;
             easyButton.CheckedChanged += new EventHandler(difficulty_radio_CheckedChanged);
 
-            RadioButton mediumButton = new RadioButton();
             mediumButton.ForeColor = Color.White;
             mediumButton.Font = new Font(easyButton.Font.FontFamily, 13);
             mediumButton.Name = "btnMedium";
@@ -61,7 +104,6 @@ namespace OopLab
             mediumButton.CheckedChanged += new EventHandler(difficulty_radio_CheckedChanged);
 
 
-            RadioButton hardButton = new RadioButton();
             hardButton.ForeColor = Color.White;
             hardButton.Font = new Font(easyButton.Font.FontFamily, 13);
             hardButton.Name = "btnHard";
@@ -70,8 +112,6 @@ namespace OopLab
             hardButton.CheckedChanged += new EventHandler(difficulty_radio_CheckedChanged);
 
 
-
-            RadioButton customButton = new RadioButton();
             customButton.ForeColor = Color.White;
             customButton.Font = new Font(easyButton.Font.FontFamily, 13);
             customButton.Name = "btnCustom";
@@ -94,40 +134,69 @@ namespace OopLab
             if (RD.Name == "btnCustom")
             {
                 difficultyLevel = 3;
-                TextBox firstVal = new TextBox();
-                firstVal.Size = new Size(40, 20);
-                TextBox secondVal = new TextBox();
-                secondVal.Size = new Size(40, 20);
-                difficultyGroupBox.Controls.Add(firstVal);
-                firstVal.Location = new Point(60, 140);
-                difficultyGroupBox.Controls.Add(secondVal);
-                secondVal.Location = new Point(120, 140);
-
+                txtFirstVal.Size = new Size(40, 20);
+                txtSecondVal.Size = new Size(40, 20);
+                difficultyGroupBox.Controls.Add(txtFirstVal);
+                txtFirstVal.Location = new Point(60, 140);
+                difficultyGroupBox.Controls.Add(txtSecondVal);
+                txtSecondVal.Location = new Point(120, 140);
             }
             else
             {
-                foreach (Control c in difficultyGroupBox.Controls)
+                for (int i = difficultyGroupBox.Controls.Count - 1; i >= 0; i--)
                 {
-                    if (c is TextBox)
+                    if (difficultyGroupBox.Controls[i] is TextBox)
                     {
-                        difficultyGroupBox.Controls.Remove(c);
+                        difficultyGroupBox.Controls.Remove(difficultyGroupBox.Controls[i]);
                     }
                 }
+
                 if (RD.Name == "btnEasy")
                 {
                     difficultyLevel = 0;
+
                 }
                 if (RD.Name == "btnMedium")
                 {
                     difficultyLevel = 1;
+
                 }
                 if (RD.Name == "btnHard")
                 {
                     difficultyLevel = 2;
+
                 }
             }
+            Console.WriteLine(difficultyLevel);
+            saveDifficultySettings();
 
 
         }
+
+        public void getDifficultySettings()
+        {
+            difficultyLevel = Properties.Settings.Default.difficulty_level;
+            if (difficultyLevel == 0) easyButton.Checked = true;
+            if (difficultyLevel == 1) mediumButton.Checked = true;
+            if (difficultyLevel == 2) hardButton.Checked = true;
+            if (difficultyLevel == 3)
+            {
+                customButton.Checked = true;
+                txtFirstVal.Size = new Size(40, 20);
+                txtSecondVal.Size = new Size(40, 20);
+                difficultyGroupBox.Controls.Add(txtFirstVal);
+                txtFirstVal.Location = new Point(60, 140);
+                difficultyGroupBox.Controls.Add(txtSecondVal);
+                txtSecondVal.Location = new Point(120, 140);
+            }
+        }
+
+        public void saveDifficultySettings()
+        {
+            Properties.Settings.Default.difficulty_level = difficultyLevel;
+            Properties.Settings.Default.Save();
+        }
+
+
     }
 }
