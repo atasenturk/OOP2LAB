@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OopLab.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="difficulty_level" GenerateDefaultValueInCode="false" Type="System.Int32" Scope="User">
+    <Setting Name="difficulty_level" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="customFirstVal" Type="System.Int32" Scope="User">

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OopLab;
 
 namespace OOPLAB_1PreLab
 {
@@ -64,11 +65,11 @@ namespace OOPLAB_1PreLab
 
             if (validateLogin) 
             {
-                Form2 frm = new Form2();
-                frm.Show();
+                Form game = new OopLab.Form1();
+                game.Show();
                 this.Hide();
-
             }
+
             else
             {
                 MessageBox.Show("Wrong password or user!");
