@@ -57,5 +57,17 @@ namespace OopLab.Properties {
                 this["customSecVal"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int shape {
+            get {
+                return ((int)(this["shape"]));
+            }
+            set {
+                this["shape"] = value;
+            }
+        }
     }
 }
