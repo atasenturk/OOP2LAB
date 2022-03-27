@@ -29,9 +29,7 @@ namespace OOPLAB_1PreLab
             {
                 userName = "admin",
                 password = "admin"
-            }
-
-                );
+            });
             
         }
 
@@ -47,7 +45,24 @@ namespace OOPLAB_1PreLab
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "admin" && textBox2.Text == "admin" || textBox1.Text == "user" && textBox2.Text == "user") 
+            bool validateLogin = false;
+            foreach(var us in users)
+            {
+                if (textBox1.Text == us.userName && textBox2.Text == us.password)
+                {
+                    validateLogin = true;
+                }
+            }
+
+            foreach (var ad in admins)
+            {
+                if (textBox1.Text == ad.userName && textBox2.Text == ad.password)
+                {
+                    validateLogin = true;
+                }
+            }
+
+            if (validateLogin) 
             {
                 Form2 frm = new Form2();
                 frm.Show();
@@ -73,9 +88,5 @@ namespace OOPLAB_1PreLab
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
