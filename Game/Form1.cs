@@ -14,9 +14,11 @@ namespace OopLab
     {
         public int difficultyLevel;
         public int shape;
+        public int color;
         Panel pnlMenu;
         GroupBox difficultyGroupBox;
         GroupBox shapeGroupBox;
+        GroupBox colorGroupBox;
         RadioButton easyButton = new RadioButton();
         RadioButton mediumButton = new RadioButton();
         RadioButton hardButton = new RadioButton();
@@ -24,6 +26,9 @@ namespace OopLab
         RadioButton squareButton = new RadioButton();
         RadioButton triangleButton = new RadioButton();
         RadioButton roundShapesButton = new RadioButton();
+        RadioButton redColorButton = new RadioButton();
+        RadioButton blueColorButton = new RadioButton();
+        RadioButton yellowColorButton = new RadioButton();
         TextBox txtFirstVal = new TextBox();
         TextBox txtSecondVal = new TextBox();
         public int firstVal;
@@ -34,19 +39,27 @@ namespace OopLab
         {
             InitializeComponent();
             pnlMenu = new Panel();
-            pnlMenu.Location = new Point(233, 123);
+            pnlMenu.Location = new Point(180, 100);
             pnlMenu.BackColor = Color.FromArgb(47, 47, 47);
             pnlMenu.AutoSize = false;
-            pnlMenu.Size = new Size(634, 364);
+            pnlMenu.Size = new Size(750, 450);
             pnlMenu.BorderStyle = BorderStyle.FixedSingle;
+
             difficultyGroupBox = new GroupBox();
             difficultyGroupBox.AutoSize = true;
             difficultyGroupBox.Text = "";
             difficultyGroupBox.Location = new Point(50, 100);
+
+            colorGroupBox = new GroupBox();
+            colorGroupBox.AutoSize = true;
+            colorGroupBox.Text = "";
+            colorGroupBox.Location = new Point(50, 300);
+
             shapeGroupBox = new GroupBox();
             shapeGroupBox.AutoSize = true;
             shapeGroupBox.Text = "";
             shapeGroupBox.Location = new Point(330, 100);
+
             txtFirstVal.TextChanged += new EventHandler(firstVal_Text_Changed);
             txtSecondVal.TextChanged += new EventHandler(secondVal_Text_Changed);
         }
@@ -80,7 +93,27 @@ namespace OopLab
             getDifficultySettings();
             getShapeSettings();
             getValueSettings();
+            getColorSettings();
+        }
 
+        private void getColorSettings()
+        {
+            color = Properties.Settings.Default.color;
+            if (color == 0)
+            {
+                redColorButton.Checked = true;
+                pnlMain.BackColor = Color.Red;
+            }
+            if (color == 1)
+            {
+                blueColorButton.Checked = true;
+                pnlMain.BackColor = Color.Blue;
+            }
+            if (color == 2)
+            {
+                yellowColorButton.Checked = true;
+                pnlMain.BackColor = Color.Yellow;
+            }
         }
 
         private void getShapeSettings()
@@ -100,7 +133,6 @@ namespace OopLab
         private void btnMenu_Click(object sender, EventArgs e)
         {
             pnlMenu.BringToFront();
-            pnlMain.BackColor = Color.FromArgb(31, 31, 31);
             Label label1 = new Label();
             label1.AutoSize = true;
             label1.Text = "SETTINGS";
@@ -185,16 +217,66 @@ namespace OopLab
             roundShapesButton.CheckedChanged += new EventHandler(shape_radio_CheckedChanged);
 
 
+            redColorButton.ForeColor = Color.White;
+            redColorButton.Font = new Font(easyButton.Font.FontFamily, 13);
+            redColorButton.Name = "btnRedColor";
+            redColorButton.Text = "Red Color";
+            redColorButton.Location = new Point(60, 20);
+            redColorButton.CheckedChanged += new EventHandler(color_radio_CheckedChanged);
+
+            blueColorButton.ForeColor = Color.White;
+            blueColorButton.Font = new Font(easyButton.Font.FontFamily, 13);
+            blueColorButton.Name = "btnBlueColor";
+            blueColorButton.Text = "Blue Color";
+            blueColorButton.Location = new Point(60, 50);
+            blueColorButton.CheckedChanged += new EventHandler(color_radio_CheckedChanged);
+
+            yellowColorButton.ForeColor = Color.White;
+            yellowColorButton.Font = new Font(easyButton.Font.FontFamily, 13);
+            yellowColorButton.Name = "btnYellowColor";
+            yellowColorButton.Text = "Yellow Color";
+            yellowColorButton.Location = new Point(60, 80);
+            yellowColorButton.CheckedChanged += new EventHandler(color_radio_CheckedChanged);
 
             difficultyGroupBox.Controls.AddRange(new Control[] { easyButton, mediumButton, hardButton, customButton });
             shapeGroupBox.Controls.AddRange(new Control[] { squareButton, triangleButton, roundShapesButton});
+            colorGroupBox.Controls.AddRange(new Control[] { redColorButton , blueColorButton , yellowColorButton });
             pnlMenu.Controls.Add(difficultyGroupBox);
             pnlMenu.Controls.Add(shapeGroupBox);
+            pnlMenu.Controls.Add(colorGroupBox);
             pnlMenu.Controls.Add(label);
             pnlMenu.Controls.Add(btnCloseMenu);
             pnlMenu.Controls.Add(label1);
             pnlMenu.Controls.Add(label2);
             pnlMain.Controls.Add(pnlMenu);
+        }
+
+        private void color_radio_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton RD = sender as RadioButton;
+            if (RD.Checked == false) return;
+            if (RD.Name == "btnRedColor")
+            {
+                color = 0;
+                pnlMain.BackColor = Color.Red;
+            }
+            if (RD.Name == "btnBlueColor")
+            {
+                color = 1;
+                pnlMain.BackColor = Color.Blue;
+            }
+            if (RD.Name == "btnYellowColor")
+            {
+                color = 2;
+                pnlMain.BackColor = Color.Yellow;
+            }
+            saveColorSettings();
+        }
+
+        private void saveColorSettings()
+        {
+            Properties.Settings.Default.color = color;
+            Properties.Settings.Default.Save();
         }
 
         private void btnCloseMenu_Click(object sender, EventArgs e)
