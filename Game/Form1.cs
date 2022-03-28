@@ -23,12 +23,12 @@ namespace OopLab
         RadioButton mediumButton = new RadioButton();
         RadioButton hardButton = new RadioButton();
         RadioButton customButton = new RadioButton();
-        RadioButton squareButton = new RadioButton();
-        RadioButton triangleButton = new RadioButton();
-        RadioButton roundShapesButton = new RadioButton();
-        RadioButton redColorButton = new RadioButton();
-        RadioButton blueColorButton = new RadioButton();
-        RadioButton yellowColorButton = new RadioButton();
+        CheckBox squareButton = new CheckBox();
+        CheckBox triangleButton = new CheckBox();
+        CheckBox roundShapesButton = new CheckBox();
+        CheckBox redColorButton = new CheckBox();
+        CheckBox blueColorButton = new CheckBox();
+        CheckBox yellowColorButton = new CheckBox();
         TextBox txtFirstVal = new TextBox();
         TextBox txtSecondVal = new TextBox();
         public int firstVal;
@@ -253,8 +253,7 @@ namespace OopLab
 
         private void color_radio_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton RD = sender as RadioButton;
-            if (RD.Checked == false) return;
+            CheckBox RD = sender as CheckBox;
             if (RD.Name == "btnRedColor")
             {
                 color = 0;
@@ -287,8 +286,7 @@ namespace OopLab
 
         private void shape_radio_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton RD = sender as RadioButton;
-            if (RD.Checked == false) return;
+            CheckBox RD = sender as CheckBox;
             if (RD.Name == "btnSquare")
             {
                 shape = 0;
