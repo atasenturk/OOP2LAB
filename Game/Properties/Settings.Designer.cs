@@ -70,5 +70,17 @@ namespace OopLab.Properties {
                 this["shape"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int color {
+            get {
+                return ((int)(this["color"]));
+            }
+            set {
+                this["color"] = value;
+            }
+        }
     }
 }
