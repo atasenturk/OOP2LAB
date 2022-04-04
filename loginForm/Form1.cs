@@ -31,7 +31,14 @@ namespace OOPLAB_1PreLab
                 userName = "admin",
                 password = "admin"
             });
-            
+            getSuccessfulLogin();
+
+        }
+
+        private void getSuccessfulLogin()
+        {
+            textBox1.Text = Properties.Settings.Default.userName;
+            textBox2.Text = Properties.Settings.Default.password;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,7 +54,8 @@ namespace OOPLAB_1PreLab
         private void button1_Click(object sender, EventArgs e)
         {
             bool validateLogin = false;
-            foreach(var us in users)
+
+            foreach (var us in users)
             {
                 if (textBox1.Text == us.userName && textBox2.Text == us.password)
                 {
@@ -63,8 +71,12 @@ namespace OOPLAB_1PreLab
                 }
             }
 
-            if (validateLogin) 
+            if (validateLogin)
             {
+
+                Properties.Settings.Default.userName = textBox1.Text;
+                Properties.Settings.Default.password = textBox2.Text;
+                Properties.Settings.Default.Save();
                 Form game = new OopLab.Form1();
                 game.Show();
                 this.Hide();
@@ -74,20 +86,44 @@ namespace OOPLAB_1PreLab
             {
                 MessageBox.Show("Wrong password or user!");
             }
-         
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
-
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "^[a-zA-Z ]"))
+            {
+                MessageBox.Show("This textbox accepts only alphabetical characters");
+                textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
+        }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            textBox2.PasswordChar = '*';
+
+
             textBox2.MaxLength = 6;
+
 
         }
 
+
+
+
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == false)
+                textBox2.PasswordChar = (char)0;
+
+
+            else
+            {
+                textBox2.PasswordChar = '*';
+            }
+        }
     }
 }
