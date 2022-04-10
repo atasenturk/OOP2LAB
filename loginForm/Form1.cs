@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OopLab;
-using System.Data.SqlClient;
 
 namespace OOPLAB_1PreLab
 {
@@ -16,26 +15,30 @@ namespace OOPLAB_1PreLab
     {
         List<User> users = new List<User>();
         List<Admin> admins = new List<Admin>();
-        private string _connectionString = "Data Source=sql5063.site4now.net;Initial Catalog=db_a855cf_ooplab; User Id = db_a855cf_ooplab_admin; Password=ataolcan123";
+
         public Form1()
         {
             InitializeComponent();
+            users.Add(new User
+            {
+                userName = "user",
+                password = "user"
+
+            });
 
             admins.Add(new Admin
             {
                 userName = "admin",
                 password = "admin"
             });
-            radioUser.Checked = true;
             getSuccessfulLogin();
-            txtPassword.PasswordChar = '*';
 
         }
 
         private void getSuccessfulLogin()
         {
-            txtUsername.Text = Properties.Settings.Default.userName;
-            txtPassword.Text = Properties.Settings.Default.password;
+            textBox1.Text = Properties.Settings.Default.userName;
+            textBox2.Text = Properties.Settings.Default.password;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,125 +52,112 @@ namespace OOPLAB_1PreLab
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
-
+        {
             bool validateLogin = false;
 
-            if (radioUser.Checked == true)
+            foreach (var us in users)
             {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
+                if (textBox1.Text == us.userName && textBox2.Text == us.password && radioButton1.Checked)
                 {
-                    try
-                    {
-                        connection.Open();
-                        SqlCommand command = new SqlCommand("SELECT * FROM Users", connection);
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            User user = new User
-                            {
-                                Username = reader["Username"].ToString(),
-                                Password = reader["Password"].ToString(),
-                                Name_Surname = reader["Name_Surname"].ToString(),
-                                Phone_Number = reader["Phone_Number"].ToString(),
-                                Address = reader["Address"].ToString(),
-                                City = reader["City"].ToString(),
-                                Country = reader["Country"].ToString(),
-                                Email = reader["Email"].ToString()
-                            };
-                            if (user.Username == txtUsername.Text && user.Password == txtPassword.Text)
-                            {
-                                validateLogin = true;
-                            }
-                        }
-                        reader.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
-                }
-            }
-
-            if (radioAdmin.Checked == true)
-            {
-                foreach (var ad in admins)
-                {
-                    if (txtUsername.Text == ad.userName && txtPassword.Text == ad.password)
-                    {
-                        validateLogin = true;
-                    }
-                }
-            }
-
-
-            if (validateLogin)
-            {
-                if (radioUser.Checked == true)
-                {
+                    validateLogin = true;
                     Form game = new OopLab.Form1();
                     game.Show();
                     this.Hide();
                 }
-
-                if (radioAdmin.Checked == true)
-                {
-                    Form adminForm = new OopLab.AdminManageForm();
-                    adminForm.Show();
-                    this.Hide();
-                }
-                Properties.Settings.Default.userName = txtUsername.Text;
-                Properties.Settings.Default.password = txtPassword.Text;
-                Properties.Settings.Default.Save();
             }
 
-            else MessageBox.Show("Wrong username or password");
+            foreach (var ad in admins)
+            {
+                if (textBox1.Text == ad.userName && textBox2.Text == ad.password && radioButton2.Checked)
+                {
+                    validateLogin = true;
+                  
+            }
 
+            if (validateLogin)
+            {
 
+                Properties.Settings.Default.userName = textBox1.Text;
+                Properties.Settings.Default.password = textBox2.Text;
+                Properties.Settings.Default.Save();
 
+               
+
+            }
+
+            else
+            {
+                MessageBox.Show("Wrong password or user!");
+            }
+
+         
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtUsername.Text, "^[a-zA-Z ]"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "^[a-zA-Z ]"))
             {
                 MessageBox.Show("This textbox accepts only alphabetical characters");
-                txtUsername.Text.Remove(txtUsername.Text.Length - 1);
+                textBox1.Text.Remove(textBox1.Text.Length - 1);
             }
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            txtPassword.MaxLength = 6;
+
+
+            textBox2.MaxLength = 6;
+
+
         }
+
+
+
+
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == true)
-                txtPassword.PasswordChar = (char)0;
+            if (checkBox1.Checked == false)
+                textBox2.PasswordChar = (char)0;
 
 
             else
             {
-                txtPassword.PasswordChar = '*';
+                textBox2.PasswordChar = '*';
             }
         }
 
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
 
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
             form2.Show();
             this.Hide();
-            
+          
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
 
         }
     }
