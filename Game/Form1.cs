@@ -98,30 +98,22 @@ namespace OopLab
 
         private void getColorSettings()
         {
-            color = Properties.Settings.Default.color;
-            if (color == 0)
-            {
-                redColorButton.Checked = true;
-                pnlMain.BackColor = Color.Red;
-            }
-            if (color == 1)
-            {
-                blueColorButton.Checked = true;
-                pnlMain.BackColor = Color.Blue;
-            }
-            if (color == 2)
-            {
-                yellowColorButton.Checked = true;
-                pnlMain.BackColor = Color.Yellow;
-            }
+            if (Properties.Settings.Default.red == true) redColorButton.Checked = true;
+            else redColorButton.Checked = false;
+            if (Properties.Settings.Default.blue == true) blueColorButton.Checked = true;
+            else blueColorButton.Checked = false;
+            if (Properties.Settings.Default.yellow == true) yellowColorButton.Checked = true;
+            else yellowColorButton.Checked = false;
         }
 
         private void getShapeSettings()
         {
-            shape = Properties.Settings.Default.shape;
-            if (shape == 0) squareButton.Checked = true;
-            if (shape == 1) triangleButton.Checked = true;
-            if (shape == 2) roundShapesButton.Checked = true;
+            if (Properties.Settings.Default.triangle == true) triangleButton.Checked = true;
+            else triangleButton.Checked = false;
+            if (Properties.Settings.Default.square == true) squareButton.Checked = true;
+            else squareButton.Checked = false;
+            if (Properties.Settings.Default.rounded == true) roundShapesButton.Checked = true;
+            else roundShapesButton.Checked = false;
         }
 
         private void getValueSettings()
@@ -253,28 +245,26 @@ namespace OopLab
 
         private void color_radio_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox RD = sender as CheckBox;
-            if (RD.Name == "btnRedColor")
-            {
-                color = 0;
-                pnlMain.BackColor = Color.Red;
-            }
-            if (RD.Name == "btnBlueColor")
-            {
-                color = 1;
-                pnlMain.BackColor = Color.Blue;
-            }
-            if (RD.Name == "btnYellowColor")
-            {
-                color = 2;
-                pnlMain.BackColor = Color.Yellow;
-            }
             saveColorSettings();
         }
 
         private void saveColorSettings()
         {
-            Properties.Settings.Default.color = color;
+            if(redColorButton.Checked == true)
+            {
+                Properties.Settings.Default.red = true;
+            }
+            else Properties.Settings.Default.red = false;
+            if (blueColorButton.Checked == true)
+            {
+                Properties.Settings.Default.blue = true;
+            }
+            else Properties.Settings.Default.blue = false;
+            if (yellowColorButton.Checked == true)
+            {
+                Properties.Settings.Default.yellow = true;
+            }
+            else Properties.Settings.Default.yellow = false;
             Properties.Settings.Default.Save();
         }
 
@@ -286,26 +276,26 @@ namespace OopLab
 
         private void shape_radio_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox RD = sender as CheckBox;
-            if (RD.Name == "btnSquare")
-            {
-                shape = 0;
-            }
-            if (RD.Name == "btnTriangle")
-            {
-                shape = 1;
-            }
-            if (RD.Name == "btnRound")
-            {
-                shape = 2;
-            }
             saveShapeSettings();
-
         }
 
         private void saveShapeSettings()
         {
-            Properties.Settings.Default.shape = shape;
+            if (squareButton.Checked == true)
+            {
+                Properties.Settings.Default.square = true;
+            }
+            else Properties.Settings.Default.square = false;
+            if (triangleButton.Checked == true)
+            {
+                Properties.Settings.Default.triangle = true;
+            }
+            else Properties.Settings.Default.triangle = false;
+            if (roundShapesButton.Checked == true)
+            {
+                Properties.Settings.Default.rounded = true;
+            }
+            else Properties.Settings.Default.rounded = false;
             Properties.Settings.Default.Save();
         }
 
