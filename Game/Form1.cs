@@ -24,7 +24,6 @@ namespace OopLab
             pnlMenu.AutoSize = false;
             pnlMenu.Size = new Size(750, 450);
             pnlMenu.BorderStyle = BorderStyle.FixedSingle;
-
         }
         private void btnMenu_Click(object sender, EventArgs e)
         {
@@ -33,6 +32,7 @@ namespace OopLab
             settings.BringToFront();
             settings.TopMost = true;
         }
+
 
 
 
