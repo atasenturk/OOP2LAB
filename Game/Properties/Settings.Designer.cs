@@ -73,13 +73,73 @@ namespace OopLab.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int color {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool red {
             get {
-                return ((int)(this["color"]));
+                return ((bool)(this["red"]));
             }
             set {
-                this["color"] = value;
+                this["red"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool blue {
+            get {
+                return ((bool)(this["blue"]));
+            }
+            set {
+                this["blue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool yellow {
+            get {
+                return ((bool)(this["yellow"]));
+            }
+            set {
+                this["yellow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool square {
+            get {
+                return ((bool)(this["square"]));
+            }
+            set {
+                this["square"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool triangle {
+            get {
+                return ((bool)(this["triangle"]));
+            }
+            set {
+                this["triangle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool rounded {
+            get {
+                return ((bool)(this["rounded"]));
+            }
+            set {
+                this["rounded"] = value;
             }
         }
     }
