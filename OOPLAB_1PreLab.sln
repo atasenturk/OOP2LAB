@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginForm", "loginForm\LoginForm.csproj", "{39952893-B4A3-4FD9-88E7-7853B38956C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainForm", "Game\MainForm.csproj", "{BDA30A48-64D2-43A2-A32D-BE1E118E31F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39952893-B4A3-4FD9-88E7-7853B38956C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39952893-B4A3-4FD9-88E7-7853B38956C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39952893-B4A3-4FD9-88E7-7853B38956C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39952893-B4A3-4FD9-88E7-7853B38956C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA30A48-64D2-43A2-A32D-BE1E118E31F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA30A48-64D2-43A2-A32D-BE1E118E31F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA30A48-64D2-43A2-A32D-BE1E118E31F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA30A48-64D2-43A2-A32D-BE1E118E31F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8E58F6D-A9BE-4310-A497-486C87CA4D3B}
+	EndGlobalSection
+EndGlobal
