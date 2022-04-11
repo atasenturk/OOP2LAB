@@ -28,7 +28,7 @@ namespace OopLab
             pnlMenu.Size = new Size(750, 450);
             pnlMenu.BorderStyle = BorderStyle.FixedSingle;
             _currentUser = UserManager.Instance;
-            lblWelcome.Text = "Hoşgeldiniz! " + _currentUser.Username;
+            lblWelcome.Text = "Welcome: " + _currentUser.Username+"!";
 
         }
         private void btnMenu_Click(object sender, EventArgs e)
@@ -92,6 +92,14 @@ namespace OopLab
         private void btnCloseProfile_Click(object sender, EventArgs e)
         {
             pnlProfile.Visible = false;
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
+            aboutForm.TopMost = true;
+            this.Enabled = false;
         }
     }
 }
