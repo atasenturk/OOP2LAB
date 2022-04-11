@@ -68,6 +68,8 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="sha256Converter.cs" />
+    <Compile Include="UserManager.cs" />
     <Compile Include="Users.cs" />
     <EmbeddedResource Include="AdminManageForm.resx">
       <DependentUpon>AdminManageForm.cs</DependentUpon>

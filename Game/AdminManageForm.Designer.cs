@@ -35,6 +35,12 @@ namespace OopLab
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnListUsers = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlDelete = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnDeleteComplete = new System.Windows.Forms.Button();
+            this.txtDeleteUsername = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.pnlUpdate = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -76,18 +82,12 @@ namespace OopLab
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pnlDelete = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnDeleteComplete = new System.Windows.Forms.Button();
-            this.txtDeleteUsername = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnlMain.SuspendLayout();
+            this.pnlDelete.SuspendLayout();
             this.pnlUpdate.SuspendLayout();
             this.pntAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.pnlDelete.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -172,6 +172,67 @@ namespace OopLab
             this.pnlMain.Size = new System.Drawing.Size(734, 669);
             this.pnlMain.TabIndex = 1;
             // 
+            // pnlDelete
+            // 
+            this.pnlDelete.Controls.Add(this.panel5);
+            this.pnlDelete.Controls.Add(this.panel4);
+            this.pnlDelete.Controls.Add(this.btnDeleteComplete);
+            this.pnlDelete.Controls.Add(this.txtDeleteUsername);
+            this.pnlDelete.Controls.Add(this.label26);
+            this.pnlDelete.Location = new System.Drawing.Point(38, 39);
+            this.pnlDelete.Name = "pnlDelete";
+            this.pnlDelete.Size = new System.Drawing.Size(593, 563);
+            this.pnlDelete.TabIndex = 3;
+            this.pnlDelete.Visible = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel5.Location = new System.Drawing.Point(37, 165);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(518, 3);
+            this.panel5.TabIndex = 33;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel4.Location = new System.Drawing.Point(37, 303);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(518, 3);
+            this.panel4.TabIndex = 32;
+            // 
+            // btnDeleteComplete
+            // 
+            this.btnDeleteComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDeleteComplete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDeleteComplete.Location = new System.Drawing.Point(415, 218);
+            this.btnDeleteComplete.Name = "btnDeleteComplete";
+            this.btnDeleteComplete.Size = new System.Drawing.Size(140, 50);
+            this.btnDeleteComplete.TabIndex = 5;
+            this.btnDeleteComplete.Text = "Delete User";
+            this.btnDeleteComplete.UseVisualStyleBackColor = true;
+            this.btnDeleteComplete.Click += new System.EventHandler(this.btnDeleteComplete_Click);
+            // 
+            // txtDeleteUsername
+            // 
+            this.txtDeleteUsername.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeleteUsername.Location = new System.Drawing.Point(202, 232);
+            this.txtDeleteUsername.Name = "txtDeleteUsername";
+            this.txtDeleteUsername.Size = new System.Drawing.Size(194, 25);
+            this.txtDeleteUsername.TabIndex = 1;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.Control;
+            this.label26.Location = new System.Drawing.Point(23, 235);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(156, 17);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Username To Delete";
+            // 
             // pnlUpdate
             // 
             this.pnlUpdate.Controls.Add(this.panel2);
@@ -195,7 +256,7 @@ namespace OopLab
             this.pnlUpdate.Controls.Add(this.btnFindUser);
             this.pnlUpdate.Controls.Add(this.txtFindUsername);
             this.pnlUpdate.Controls.Add(this.label16);
-            this.pnlUpdate.Location = new System.Drawing.Point(6, 83);
+            this.pnlUpdate.Location = new System.Drawing.Point(34, 36);
             this.pnlUpdate.Name = "pnlUpdate";
             this.pnlUpdate.Size = new System.Drawing.Size(593, 563);
             this.pnlUpdate.TabIndex = 2;
@@ -343,6 +404,7 @@ namespace OopLab
             this.txtPasswordFound.Name = "txtPasswordFound";
             this.txtPasswordFound.Size = new System.Drawing.Size(194, 25);
             this.txtPasswordFound.TabIndex = 19;
+            this.txtPasswordFound.UseSystemPasswordChar = true;
             // 
             // label15
             // 
@@ -351,9 +413,9 @@ namespace OopLab
             this.label15.ForeColor = System.Drawing.SystemColors.Control;
             this.label15.Location = new System.Drawing.Point(98, 198);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(80, 17);
+            this.label15.Size = new System.Drawing.Size(116, 17);
             this.label15.TabIndex = 18;
-            this.label15.Text = "Password";
+            this.label15.Text = "New Password";
             // 
             // txtUsernameFound
             // 
@@ -363,6 +425,7 @@ namespace OopLab
             this.txtUsernameFound.Name = "txtUsernameFound";
             this.txtUsernameFound.Size = new System.Drawing.Size(194, 25);
             this.txtUsernameFound.TabIndex = 17;
+            this.txtUsernameFound.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsernameFound_KeyPress);
             // 
             // label17
             // 
@@ -426,7 +489,7 @@ namespace OopLab
             this.pntAdd.Controls.Add(this.label2);
             this.pntAdd.Controls.Add(this.txtUsername);
             this.pntAdd.Controls.Add(this.label1);
-            this.pntAdd.Location = new System.Drawing.Point(61, 80);
+            this.pntAdd.Location = new System.Drawing.Point(11, 58);
             this.pntAdd.Name = "pntAdd";
             this.pntAdd.Size = new System.Drawing.Size(588, 495);
             this.pntAdd.TabIndex = 1;
@@ -566,6 +629,7 @@ namespace OopLab
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(194, 25);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -585,6 +649,7 @@ namespace OopLab
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(194, 25);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsername_KeyPress);
             // 
             // label1
             // 
@@ -608,67 +673,6 @@ namespace OopLab
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Visible = false;
             // 
-            // pnlDelete
-            // 
-            this.pnlDelete.Controls.Add(this.panel5);
-            this.pnlDelete.Controls.Add(this.panel4);
-            this.pnlDelete.Controls.Add(this.btnDeleteComplete);
-            this.pnlDelete.Controls.Add(this.txtDeleteUsername);
-            this.pnlDelete.Controls.Add(this.label26);
-            this.pnlDelete.Location = new System.Drawing.Point(45, 43);
-            this.pnlDelete.Name = "pnlDelete";
-            this.pnlDelete.Size = new System.Drawing.Size(593, 563);
-            this.pnlDelete.TabIndex = 3;
-            this.pnlDelete.Visible = false;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.panel4.Location = new System.Drawing.Point(37, 303);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(518, 3);
-            this.panel4.TabIndex = 32;
-            // 
-            // btnDeleteComplete
-            // 
-            this.btnDeleteComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnDeleteComplete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDeleteComplete.Location = new System.Drawing.Point(415, 218);
-            this.btnDeleteComplete.Name = "btnDeleteComplete";
-            this.btnDeleteComplete.Size = new System.Drawing.Size(140, 50);
-            this.btnDeleteComplete.TabIndex = 5;
-            this.btnDeleteComplete.Text = "Delete User";
-            this.btnDeleteComplete.UseVisualStyleBackColor = true;
-            this.btnDeleteComplete.Click += new System.EventHandler(this.btnDeleteComplete_Click);
-            // 
-            // txtDeleteUsername
-            // 
-            this.txtDeleteUsername.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeleteUsername.Location = new System.Drawing.Point(202, 232);
-            this.txtDeleteUsername.Name = "txtDeleteUsername";
-            this.txtDeleteUsername.Size = new System.Drawing.Size(194, 25);
-            this.txtDeleteUsername.TabIndex = 1;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.SystemColors.Control;
-            this.label26.Location = new System.Drawing.Point(23, 235);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(156, 17);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "Username To Delete";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.panel5.Location = new System.Drawing.Point(37, 165);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(518, 3);
-            this.panel5.TabIndex = 33;
-            // 
             // AdminManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -678,16 +682,17 @@ namespace OopLab
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.panel1);
             this.Name = "AdminManageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminManageForm";
             this.panel1.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
+            this.pnlDelete.ResumeLayout(false);
+            this.pnlDelete.PerformLayout();
             this.pnlUpdate.ResumeLayout(false);
             this.pnlUpdate.PerformLayout();
             this.pntAdd.ResumeLayout(false);
             this.pntAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.pnlDelete.ResumeLayout(false);
-            this.pnlDelete.PerformLayout();
             this.ResumeLayout(false);
 
         }

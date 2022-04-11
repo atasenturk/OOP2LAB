@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using OOPLAB_1PreLab;
 
 namespace OopLab
 {
@@ -73,8 +74,10 @@ namespace OopLab
 
         private void btnCompleteAdd_Click(object sender, EventArgs e)
         {
+
             if (txtUsername.Text != "" && txtPassword.Text != "" && txtNameSurname.Text != "")
             {
+                string hashedPassword = OOPLAB_1PreLab.sha256Converter.ComputeSha256Hash(txtPassword.Text);
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     try
@@ -82,7 +85,7 @@ namespace OopLab
                         connection.Open();
                         SqlCommand command = new SqlCommand("INSERT INTO Users VALUES (@username, @password, @namesurname,@phone_number, @address, @city, @county, @email)", connection);
                         command.Parameters.AddWithValue("@username", txtUsername.Text);
-                        command.Parameters.AddWithValue("@password", txtPassword.Text);
+                        command.Parameters.AddWithValue("@password", hashedPassword);
                         command.Parameters.AddWithValue("@namesurname", txtNameSurname.Text);
                         command.Parameters.AddWithValue("@phone_number", txtPhone.Text);
                         command.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -138,7 +141,6 @@ namespace OopLab
                     while (reader.Read())
                     {
                         txtUsernameFound.Text = reader["Username"].ToString();
-                        txtPasswordFound.Text = reader["Password"].ToString();
                         txtNameFound.Text = reader["Name_Surname"].ToString();
                         txtPhoneFound.Text = reader["Phone_Number"].ToString();
                         txtAddressFound.Text = reader["Address"].ToString();
@@ -157,6 +159,7 @@ namespace OopLab
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string hashedPass = sha256Converter.ComputeSha256Hash(txtPasswordFound.Text);
             if (txtPasswordFound.Text != "" && txtNameFound.Text != "")
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -167,7 +170,7 @@ namespace OopLab
                         SqlCommand command = new SqlCommand("UPDATE Users SET Password = @password, Name_Surname = @namesurname, Phone_Number = @phone_number," +
                             " Address = @address, City = @city, Country = @county, Email = @email WHERE Username = @username", connection);
                         command.Parameters.AddWithValue("@username", txtUsernameFound.Text);
-                        command.Parameters.AddWithValue("@password", txtPasswordFound.Text);
+                        command.Parameters.AddWithValue("@password", hashedPass);
                         command.Parameters.AddWithValue("@namesurname", txtNameFound.Text);
                         command.Parameters.AddWithValue("@phone_number", txtPhoneFound.Text);
                         command.Parameters.AddWithValue("@address", txtAddressFound.Text);
@@ -233,6 +236,16 @@ namespace OopLab
             pnlUpdate.Visible = false;
             pntAdd.Visible = false;
             dataGridView1.Visible = false;
+        }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void txtUsernameFound_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
     }
 }

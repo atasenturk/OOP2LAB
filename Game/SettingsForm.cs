@@ -45,19 +45,19 @@ namespace OopLab
                 label1.AutoSize = true;
                 label1.Text = "First Value";
                 label1.ForeColor = Color.White;
-                label1.Location = new Point(30, 140);
+                label1.Location = new Point(50, 180);
 
                 Label label2 = new Label();
                 label2.AutoSize = true;
                 label2.Text = "Second Value";
                 label2.ForeColor = Color.White;
-                label2.Location = new Point(30, 170);
+                label2.Location = new Point(50, 210);
 
-                txtFirstVal.Location = new Point(150, 140);
-                txtSecondVal.Location = new Point(150, 170);
+                txtFirstVal.Location = new Point(170, 180);
+                txtSecondVal.Location = new Point(170, 210);
                 difficultyGroupBox.Controls.Add(label1);
-                difficultyGroupBox.Controls.Add(txtFirstVal);
                 difficultyGroupBox.Controls.Add(label2);
+                difficultyGroupBox.Controls.Add(txtFirstVal);
                 difficultyGroupBox.Controls.Add(txtSecondVal);
             }
             else
@@ -86,12 +86,7 @@ namespace OopLab
 
                 }
             }
-            Console.WriteLine(difficultyLevel);
         }
-
-
-
-
 
 
         //Setters
@@ -184,10 +179,12 @@ namespace OopLab
                 btnCustom.Checked = true;
                 txtFirstVal.Size = new Size(40, 20);
                 txtSecondVal.Size = new Size(40, 20);
+
+                txtFirstVal.Location = new Point(170, 180);
+                txtSecondVal.Location = new Point(170, 210);
+
                 difficultyGroupBox.Controls.Add(txtFirstVal);
-                txtFirstVal.Location = new Point(60, 140);
                 difficultyGroupBox.Controls.Add(txtSecondVal);
-                txtSecondVal.Location = new Point(120, 140);
             }
         }
         private void getShapeSettings()

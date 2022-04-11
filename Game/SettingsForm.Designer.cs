@@ -31,14 +31,14 @@ namespace OopLab
         {
             this.label1 = new System.Windows.Forms.Label();
             this.difficultyGroupBox = new System.Windows.Forms.GroupBox();
-            this.btnEasy = new System.Windows.Forms.RadioButton();
-            this.btnMedium = new System.Windows.Forms.RadioButton();
-            this.btnHard = new System.Windows.Forms.RadioButton();
             this.btnCustom = new System.Windows.Forms.RadioButton();
+            this.btnHard = new System.Windows.Forms.RadioButton();
+            this.btnMedium = new System.Windows.Forms.RadioButton();
+            this.btnEasy = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkRed = new System.Windows.Forms.CheckBox();
-            this.chkBlue = new System.Windows.Forms.CheckBox();
             this.chkYellow = new System.Windows.Forms.CheckBox();
+            this.chkBlue = new System.Windows.Forms.CheckBox();
+            this.chkRed = new System.Windows.Forms.CheckBox();
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkRounded = new System.Windows.Forms.CheckBox();
@@ -67,57 +67,18 @@ namespace OopLab
             this.difficultyGroupBox.Controls.Add(this.btnHard);
             this.difficultyGroupBox.Controls.Add(this.btnMedium);
             this.difficultyGroupBox.Controls.Add(this.btnEasy);
-            this.difficultyGroupBox.Location = new System.Drawing.Point(122, 146);
+            this.difficultyGroupBox.Location = new System.Drawing.Point(56, 114);
             this.difficultyGroupBox.Name = "difficultyGroupBox";
-            this.difficultyGroupBox.Size = new System.Drawing.Size(164, 170);
+            this.difficultyGroupBox.Size = new System.Drawing.Size(209, 210);
             this.difficultyGroupBox.TabIndex = 1;
             this.difficultyGroupBox.TabStop = false;
-            // 
-            // btnEasy
-            // 
-            this.btnEasy.AutoSize = true;
-            this.btnEasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnEasy.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnEasy.Location = new System.Drawing.Point(22, 32);
-            this.btnEasy.Name = "btnEasy";
-            this.btnEasy.Size = new System.Drawing.Size(64, 24);
-            this.btnEasy.TabIndex = 0;
-            this.btnEasy.TabStop = true;
-            this.btnEasy.Text = "Easy";
-            this.btnEasy.UseVisualStyleBackColor = true;
-            // 
-            // btnMedium
-            // 
-            this.btnMedium.AutoSize = true;
-            this.btnMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnMedium.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnMedium.Location = new System.Drawing.Point(22, 62);
-            this.btnMedium.Name = "btnMedium";
-            this.btnMedium.Size = new System.Drawing.Size(86, 24);
-            this.btnMedium.TabIndex = 1;
-            this.btnMedium.TabStop = true;
-            this.btnMedium.Text = "Medium";
-            this.btnMedium.UseVisualStyleBackColor = true;
-            // 
-            // btnHard
-            // 
-            this.btnHard.AutoSize = true;
-            this.btnHard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHard.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnHard.Location = new System.Drawing.Point(22, 92);
-            this.btnHard.Name = "btnHard";
-            this.btnHard.Size = new System.Drawing.Size(64, 24);
-            this.btnHard.TabIndex = 2;
-            this.btnHard.TabStop = true;
-            this.btnHard.Text = "Hard";
-            this.btnHard.UseVisualStyleBackColor = true;
             // 
             // btnCustom
             // 
             this.btnCustom.AutoSize = true;
             this.btnCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCustom.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCustom.Location = new System.Drawing.Point(22, 122);
+            this.btnCustom.Location = new System.Drawing.Point(54, 137);
             this.btnCustom.Name = "btnCustom";
             this.btnCustom.Size = new System.Drawing.Size(85, 24);
             this.btnCustom.TabIndex = 3;
@@ -125,52 +86,91 @@ namespace OopLab
             this.btnCustom.Text = "Custom";
             this.btnCustom.UseVisualStyleBackColor = true;
             // 
+            // btnHard
+            // 
+            this.btnHard.AutoSize = true;
+            this.btnHard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnHard.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnHard.Location = new System.Drawing.Point(54, 107);
+            this.btnHard.Name = "btnHard";
+            this.btnHard.Size = new System.Drawing.Size(64, 24);
+            this.btnHard.TabIndex = 2;
+            this.btnHard.TabStop = true;
+            this.btnHard.Text = "Hard";
+            this.btnHard.UseVisualStyleBackColor = true;
+            // 
+            // btnMedium
+            // 
+            this.btnMedium.AutoSize = true;
+            this.btnMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMedium.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnMedium.Location = new System.Drawing.Point(54, 77);
+            this.btnMedium.Name = "btnMedium";
+            this.btnMedium.Size = new System.Drawing.Size(86, 24);
+            this.btnMedium.TabIndex = 1;
+            this.btnMedium.TabStop = true;
+            this.btnMedium.Text = "Medium";
+            this.btnMedium.UseVisualStyleBackColor = true;
+            // 
+            // btnEasy
+            // 
+            this.btnEasy.AutoSize = true;
+            this.btnEasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEasy.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnEasy.Location = new System.Drawing.Point(54, 47);
+            this.btnEasy.Name = "btnEasy";
+            this.btnEasy.Size = new System.Drawing.Size(64, 24);
+            this.btnEasy.TabIndex = 0;
+            this.btnEasy.TabStop = true;
+            this.btnEasy.Text = "Easy";
+            this.btnEasy.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.chkYellow);
             this.groupBox3.Controls.Add(this.chkBlue);
             this.groupBox3.Controls.Add(this.chkRed);
-            this.groupBox3.Location = new System.Drawing.Point(298, 354);
+            this.groupBox3.Location = new System.Drawing.Point(317, 114);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(164, 170);
+            this.groupBox3.Size = new System.Drawing.Size(207, 210);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            // 
-            // chkRed
-            // 
-            this.chkRed.AutoSize = true;
-            this.chkRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.chkRed.ForeColor = System.Drawing.SystemColors.Control;
-            this.chkRed.Location = new System.Drawing.Point(53, 30);
-            this.chkRed.Name = "chkRed";
-            this.chkRed.Size = new System.Drawing.Size(58, 24);
-            this.chkRed.TabIndex = 0;
-            this.chkRed.Text = "Red";
-            this.chkRed.UseVisualStyleBackColor = true;
-            // 
-            // chkBlue
-            // 
-            this.chkBlue.AutoSize = true;
-            this.chkBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.chkBlue.ForeColor = System.Drawing.SystemColors.Control;
-            this.chkBlue.Location = new System.Drawing.Point(53, 70);
-            this.chkBlue.Name = "chkBlue";
-            this.chkBlue.Size = new System.Drawing.Size(62, 24);
-            this.chkBlue.TabIndex = 1;
-            this.chkBlue.Text = "Blue";
-            this.chkBlue.UseVisualStyleBackColor = true;
             // 
             // chkYellow
             // 
             this.chkYellow.AutoSize = true;
             this.chkYellow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chkYellow.ForeColor = System.Drawing.SystemColors.Control;
-            this.chkYellow.Location = new System.Drawing.Point(53, 113);
+            this.chkYellow.Location = new System.Drawing.Point(60, 130);
             this.chkYellow.Name = "chkYellow";
             this.chkYellow.Size = new System.Drawing.Size(76, 24);
             this.chkYellow.TabIndex = 2;
             this.chkYellow.Text = "Yellow";
             this.chkYellow.UseVisualStyleBackColor = true;
+            // 
+            // chkBlue
+            // 
+            this.chkBlue.AutoSize = true;
+            this.chkBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.chkBlue.ForeColor = System.Drawing.SystemColors.Control;
+            this.chkBlue.Location = new System.Drawing.Point(60, 87);
+            this.chkBlue.Name = "chkBlue";
+            this.chkBlue.Size = new System.Drawing.Size(62, 24);
+            this.chkBlue.TabIndex = 1;
+            this.chkBlue.Text = "Blue";
+            this.chkBlue.UseVisualStyleBackColor = true;
+            // 
+            // chkRed
+            // 
+            this.chkRed.AutoSize = true;
+            this.chkRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.chkRed.ForeColor = System.Drawing.SystemColors.Control;
+            this.chkRed.Location = new System.Drawing.Point(60, 47);
+            this.chkRed.Name = "chkRed";
+            this.chkRed.Size = new System.Drawing.Size(58, 24);
+            this.chkRed.TabIndex = 0;
+            this.chkRed.Text = "Red";
+            this.chkRed.UseVisualStyleBackColor = true;
             // 
             // btnSaveSettings
             // 
@@ -190,9 +190,9 @@ namespace OopLab
             this.groupBox1.Controls.Add(this.chkRounded);
             this.groupBox1.Controls.Add(this.chkTriangle);
             this.groupBox1.Controls.Add(this.chkSquare);
-            this.groupBox1.Location = new System.Drawing.Point(529, 146);
+            this.groupBox1.Location = new System.Drawing.Point(576, 114);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(164, 170);
+            this.groupBox1.Size = new System.Drawing.Size(222, 210);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
@@ -201,7 +201,7 @@ namespace OopLab
             this.chkRounded.AutoSize = true;
             this.chkRounded.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chkRounded.ForeColor = System.Drawing.SystemColors.Control;
-            this.chkRounded.Location = new System.Drawing.Point(53, 113);
+            this.chkRounded.Location = new System.Drawing.Point(67, 130);
             this.chkRounded.Name = "chkRounded";
             this.chkRounded.Size = new System.Drawing.Size(94, 24);
             this.chkRounded.TabIndex = 2;
@@ -213,7 +213,7 @@ namespace OopLab
             this.chkTriangle.AutoSize = true;
             this.chkTriangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chkTriangle.ForeColor = System.Drawing.SystemColors.Control;
-            this.chkTriangle.Location = new System.Drawing.Point(53, 70);
+            this.chkTriangle.Location = new System.Drawing.Point(67, 87);
             this.chkTriangle.Name = "chkTriangle";
             this.chkTriangle.Size = new System.Drawing.Size(88, 24);
             this.chkTriangle.TabIndex = 1;
@@ -225,7 +225,7 @@ namespace OopLab
             this.chkSquare.AutoSize = true;
             this.chkSquare.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chkSquare.ForeColor = System.Drawing.SystemColors.Control;
-            this.chkSquare.Location = new System.Drawing.Point(53, 30);
+            this.chkSquare.Location = new System.Drawing.Point(67, 47);
             this.chkSquare.Name = "chkSquare";
             this.chkSquare.Size = new System.Drawing.Size(81, 24);
             this.chkSquare.TabIndex = 0;
