@@ -30,10 +30,13 @@ namespace OopLab
         private void InitializeComponent()
         {
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnAbout = new System.Windows.Forms.Button();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlProfile = new System.Windows.Forms.Panel();
+            this.btnCloseProfile = new System.Windows.Forms.Button();
             this.btnUpdateMe = new System.Windows.Forms.Button();
             this.txtEmailFound = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,8 +52,6 @@ namespace OopLab
             this.label14 = new System.Windows.Forms.Label();
             this.txtPasswordFound = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.btnCloseProfile = new System.Windows.Forms.Button();
-            this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlProfile.SuspendLayout();
@@ -59,6 +60,7 @@ namespace OopLab
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.pnlTop.Controls.Add(this.btnAbout);
             this.pnlTop.Controls.Add(this.lblWelcome);
             this.pnlTop.Controls.Add(this.btnProfile);
             this.pnlTop.Controls.Add(this.btnMenu);
@@ -67,6 +69,30 @@ namespace OopLab
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1136, 62);
             this.pnlTop.TabIndex = 0;
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAbout.Location = new System.Drawing.Point(112, 12);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(85, 35);
+            this.btnAbout.TabIndex = 3;
+            this.btnAbout.Text = "About";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            // 
+            // lblWelcome
+            // 
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblWelcome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblWelcome.Location = new System.Drawing.Point(747, 24);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(89, 18);
+            this.lblWelcome.TabIndex = 2;
+            this.lblWelcome.Text = "Welcome:";
             // 
             // btnProfile
             // 
@@ -127,6 +153,19 @@ namespace OopLab
             this.pnlProfile.Size = new System.Drawing.Size(852, 492);
             this.pnlProfile.TabIndex = 0;
             this.pnlProfile.Visible = false;
+            // 
+            // btnCloseProfile
+            // 
+            this.btnCloseProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCloseProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCloseProfile.Location = new System.Drawing.Point(685, 18);
+            this.btnCloseProfile.Name = "btnCloseProfile";
+            this.btnCloseProfile.Size = new System.Drawing.Size(125, 33);
+            this.btnCloseProfile.TabIndex = 47;
+            this.btnCloseProfile.Text = "Close Profile";
+            this.btnCloseProfile.UseVisualStyleBackColor = true;
+            this.btnCloseProfile.Click += new System.EventHandler(this.btnCloseProfile_Click);
             // 
             // btnUpdateMe
             // 
@@ -275,30 +314,6 @@ namespace OopLab
             this.label15.TabIndex = 33;
             this.label15.Text = "Password";
             // 
-            // btnCloseProfile
-            // 
-            this.btnCloseProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCloseProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCloseProfile.Location = new System.Drawing.Point(685, 18);
-            this.btnCloseProfile.Name = "btnCloseProfile";
-            this.btnCloseProfile.Size = new System.Drawing.Size(125, 33);
-            this.btnCloseProfile.TabIndex = 47;
-            this.btnCloseProfile.Text = "Close Profile";
-            this.btnCloseProfile.UseVisualStyleBackColor = true;
-            this.btnCloseProfile.Click += new System.EventHandler(this.btnCloseProfile_Click);
-            // 
-            // lblWelcome
-            // 
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblWelcome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblWelcome.Location = new System.Drawing.Point(747, 24);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(115, 18);
-            this.lblWelcome.TabIndex = 2;
-            this.lblWelcome.Text = "Hoşgeldiniz! ";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -347,6 +362,7 @@ namespace OopLab
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnCloseProfile;
         private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
 
