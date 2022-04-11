@@ -53,7 +53,6 @@
             this.label1.Size = new System.Drawing.Size(81, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -77,11 +76,9 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(127, 243);
-            this.txtPassword.MaxLength = 6;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(175, 20);
             this.txtPassword.TabIndex = 3;
-            this.txtPassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
             // 
@@ -89,7 +86,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(127, 287);
+            this.button1.Location = new System.Drawing.Point(127, 308);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(175, 33);
             this.button1.TabIndex = 4;
@@ -110,21 +107,21 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.checkBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.checkBox1.Location = new System.Drawing.Point(314, 242);
+            this.checkBox1.Location = new System.Drawing.Point(127, 268);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(61, 21);
+            this.checkBox1.Size = new System.Drawing.Size(114, 19);
             this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Show";
+            this.checkBox1.Text = "Show Password";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(127, 346);
+            this.button2.Location = new System.Drawing.Point(127, 363);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(175, 33);
@@ -136,11 +133,12 @@
             // radioUser
             // 
             this.radioUser.AutoSize = true;
+            this.radioUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.radioUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.radioUser.Location = new System.Drawing.Point(314, 214);
+            this.radioUser.Location = new System.Drawing.Point(314, 244);
             this.radioUser.Margin = new System.Windows.Forms.Padding(2);
             this.radioUser.Name = "radioUser";
-            this.radioUser.Size = new System.Drawing.Size(47, 17);
+            this.radioUser.Size = new System.Drawing.Size(55, 20);
             this.radioUser.TabIndex = 9;
             this.radioUser.TabStop = true;
             this.radioUser.Text = "User";
@@ -149,11 +147,12 @@
             // radioAdmin
             // 
             this.radioAdmin.AutoSize = true;
+            this.radioAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.radioAdmin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.radioAdmin.Location = new System.Drawing.Point(314, 193);
+            this.radioAdmin.Location = new System.Drawing.Point(314, 205);
             this.radioAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.radioAdmin.Name = "radioAdmin";
-            this.radioAdmin.Size = new System.Drawing.Size(54, 17);
+            this.radioAdmin.Size = new System.Drawing.Size(64, 20);
             this.radioAdmin.TabIndex = 10;
             this.radioAdmin.TabStop = true;
             this.radioAdmin.Text = "Admin";
@@ -176,10 +175,11 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
