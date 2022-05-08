@@ -1,0 +1,5 @@
+C:\Users\OLCAN\Desktop\OOPLAB GİT\OOP2LAB\OOP2LAB\loginForm\obj\Debug\LoginForm.csprojAssemblyReference.cache
+C:\Users\OLCAN\Desktop\OOPLAB GİT\OOP2LAB\OOP2LAB\loginForm\obj\Debug\OOPLAB_1PreLab.Form1.resources
+C:\Users\OLCAN\Desktop\OOPLAB GİT\OOP2LAB\OOP2LAB\loginForm\obj\Debug\OOPLAB_1PreLab.Properties.Resources.resources
+C:\Users\OLCAN\Desktop\OOPLAB GİT\OOP2LAB\OOP2LAB\loginForm\obj\Debug\LoginForm.csproj.GenerateResource.cache
+C:\Users\OLCAN\Desktop\OOPLAB GİT\OOP2LAB\OOP2LAB\loginForm\obj\Debug\LoginForm.csproj.CoreCompileInputs.cache
