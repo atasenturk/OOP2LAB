@@ -22,6 +22,7 @@ namespace OopLab
             pnlUpdate.Visible = false;
             pntAdd.Visible = false;
             dataGridView1.Visible = true;
+            dataGridView1.Refresh();
             dataGridView1.Dock = DockStyle.Fill;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -199,22 +200,27 @@ namespace OopLab
         {
             if (txtDeleteUsername.Text != "")
             {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
+                DialogResult dialogResult = MessageBox.Show("Are you sure about deleting this user?", "Warning", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    try
+                    using (SqlConnection connection = new SqlConnection(_connectionString))
                     {
-                        connection.Open();
-                        SqlCommand command = new SqlCommand("DELETE FROM Users WHERE Username = @deleteusername", connection);
-                        command.Parameters.AddWithValue("@deleteusername", txtDeleteUsername.Text);
-                        command.ExecuteNonQuery();
+                        try
+                        {
+                            connection.Open();
+                            SqlCommand command = new SqlCommand("DELETE FROM Users WHERE Username = @deleteusername", connection);
+                            command.Parameters.AddWithValue("@deleteusername", txtDeleteUsername.Text);
+                            command.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        txtDeleteUsername.Clear();
+                        MessageBox.Show("User is deleted successfully!");
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
-                    txtDeleteUsername.Clear();
-                    MessageBox.Show("User is deleted successfully!");
                 }
+
             }
             else
             {
