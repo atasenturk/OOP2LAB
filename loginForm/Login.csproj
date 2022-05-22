@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BDA30A48-64D2-43A2-A32D-BE1E118E31F2}</ProjectGuid>
+    <ProjectGuid>{519F2708-56F9-428E-A598-6FF150A74DEA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>OopLab</RootNamespace>
-    <AssemblyName>OopLab</AssemblyName>
+    <RootNamespace>OOPLAB_1PreLab</RootNamespace>
+    <AssemblyName>OOPLAB_1PreLab</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,45 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutForm.Designer.cs">
-      <DependentUpon>AboutForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminManageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminManageForm.Designer.cs">
-      <DependentUpon>AdminManageForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Admin.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QItem.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="SettingsForm.cs">
+    <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingsForm.Designer.cs">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sha256Converter.cs" />
-    <Compile Include="UserManager.cs" />
-    <Compile Include="Users.cs" />
-    <EmbeddedResource Include="AboutForm.resx">
-      <DependentUpon>AboutForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminManageForm.resx">
-      <DependentUpon>AdminManageForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,11 +77,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,49 +92,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Rectangle.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rectangle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rectangle1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rectangle11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rectangle2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rounded_Red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Square_Red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Square_Red1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Square_Red11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rounded_Red1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rounded_Red2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Square_Red12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Triangle_Red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Triangle_Red1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Triangle_Red2.png" />
+    <ProjectReference Include="..\Game\MainForm.csproj">
+      <Project>{bda30a48-64d2-43a2-a32d-be1e118e31f2}</Project>
+      <Name>MainForm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

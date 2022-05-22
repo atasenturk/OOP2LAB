@@ -1,21 +1,16 @@
-﻿using System;
+﻿using OopLab;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using OopLab;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace OOPLAB_1PreLab
 {
     public partial class Form1 : Form
     {
-        List<User> users = new List<User>();
+        List<Users> users = new List<Users>();
         List<Admin> admins = new List<Admin>();
+        public static UserManager _userManager;
         private string _connectionString = "Data Source=sql5063.site4now.net;Initial Catalog=db_a855cf_ooplab; User Id = db_a855cf_ooplab_admin; Password=ataolcan123";
         public Form1()
         {
@@ -38,21 +33,11 @@ namespace OOPLAB_1PreLab
             txtPassword.Text = Properties.Settings.Default.password;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
-        { 
-
+        {
+            string hashedPassword = sha256Converter.ComputeSha256Hash(txtPassword.Text);
             bool validateLogin = false;
-
+            Users currentUser = new Users();
             if (radioUser.Checked == true)
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -65,7 +50,7 @@ namespace OOPLAB_1PreLab
 
                         while (reader.Read())
                         {
-                            User user = new User
+                            Users user = new Users
                             {
                                 Username = reader["Username"].ToString(),
                                 Password = reader["Password"].ToString(),
@@ -76,8 +61,9 @@ namespace OOPLAB_1PreLab
                                 Country = reader["Country"].ToString(),
                                 Email = reader["Email"].ToString()
                             };
-                            if (user.Username == txtUsername.Text && user.Password == txtPassword.Text)
+                            if (user.Username == txtUsername.Text && user.Password == hashedPassword)
                             {
+                                currentUser = user;
                                 validateLogin = true;
                             }
                         }
@@ -106,6 +92,7 @@ namespace OOPLAB_1PreLab
             {
                 if (radioUser.Checked == true)
                 {
+                    UserManager user = new UserManager(currentUser);
                     Form game = new OopLab.Form1();
                     game.Show();
                     this.Hide();
@@ -138,10 +125,6 @@ namespace OOPLAB_1PreLab
                 txtUsername.Text.Remove(txtUsername.Text.Length - 1);
             }
         }
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            txtPassword.MaxLength = 6;
-        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -166,8 +149,7 @@ namespace OOPLAB_1PreLab
         {
             Form2 form2 = new Form2();
             form2.Show();
-            this.Hide();
-            
+
 
         }
     }

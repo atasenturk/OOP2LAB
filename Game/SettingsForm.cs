@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OopLab
@@ -13,6 +7,7 @@ namespace OopLab
 
     public partial class SettingsForm : Form
     {
+        OopLab.Form1 form1;
         public int firstVal;
         public int secondVal;
         public int difficultyLevel;
@@ -21,9 +16,10 @@ namespace OopLab
 
 
 
-        public SettingsForm()
+        public SettingsForm(Form1 form1)
         {
             InitializeComponent();
+            this.form1 = form1;
             btnEasy.CheckedChanged += new EventHandler(difficulty_radio_CheckedChanged);
             btnMedium.CheckedChanged += new EventHandler(difficulty_radio_CheckedChanged);
             btnHard.CheckedChanged += new EventHandler(difficulty_radio_CheckedChanged);
@@ -96,6 +92,9 @@ namespace OopLab
             saveShapeSettings();
             saveColorSettings();
             saveCustomValSettings();
+            form1.point = 0;
+            form1.gameBoard.Dispose();
+            form1.createBoard();
         }
 
         private void saveCustomValSettings()
