@@ -94,6 +94,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -110,6 +111,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rounded_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Square_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Square_Red1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Square_Red11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rounded_Red1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rounded_Red2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

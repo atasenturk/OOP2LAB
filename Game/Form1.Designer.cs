@@ -35,6 +35,7 @@ namespace OopLab
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlBoard = new System.Windows.Forms.Panel();
             this.pnlProfile = new System.Windows.Forms.Panel();
             this.btnCloseProfile = new System.Windows.Forms.Button();
             this.btnUpdateMe = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@ namespace OopLab
             this.label14 = new System.Windows.Forms.Label();
             this.txtPasswordFound = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+
             this.pnlTop.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlProfile.SuspendLayout();
@@ -122,12 +124,22 @@ namespace OopLab
             // 
             // pnlMain
             // 
+            this.pnlMain.Controls.Add(this.button1);
+            this.pnlMain.Controls.Add(this.pnlBoard);
             this.pnlMain.Controls.Add(this.pnlProfile);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 62);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1136, 599);
             this.pnlMain.TabIndex = 1;
+            // 
+            // pnlBoard
+            // 
+            this.pnlBoard.AutoScroll = true;
+            this.pnlBoard.Location = new System.Drawing.Point(242, 6);
+            this.pnlBoard.Name = "pnlBoard";
+            this.pnlBoard.Size = new System.Drawing.Size(581, 581);
+            this.pnlBoard.TabIndex = 1;
             // 
             // pnlProfile
             // 
@@ -148,7 +160,7 @@ namespace OopLab
             this.pnlProfile.Controls.Add(this.label14);
             this.pnlProfile.Controls.Add(this.txtPasswordFound);
             this.pnlProfile.Controls.Add(this.label15);
-            this.pnlProfile.Location = new System.Drawing.Point(127, 49);
+            this.pnlProfile.Location = new System.Drawing.Point(730, 63);
             this.pnlProfile.Name = "pnlProfile";
             this.pnlProfile.Size = new System.Drawing.Size(852, 492);
             this.pnlProfile.TabIndex = 0;
@@ -313,7 +325,7 @@ namespace OopLab
             this.label15.Size = new System.Drawing.Size(80, 17);
             this.label15.TabIndex = 33;
             this.label15.Text = "Password";
-            // 
+
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -363,6 +375,7 @@ namespace OopLab
         private System.Windows.Forms.Button btnCloseProfile;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnAbout;
+
     }
 }
 
