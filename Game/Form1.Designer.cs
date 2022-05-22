@@ -53,7 +53,7 @@ namespace OopLab
             this.label14 = new System.Windows.Forms.Label();
             this.txtPasswordFound = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+
             this.pnlTop.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlProfile.SuspendLayout();
@@ -325,17 +325,7 @@ namespace OopLab
             this.label15.Size = new System.Drawing.Size(80, 17);
             this.label15.TabIndex = 33;
             this.label15.Text = "Password";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(42, 140);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
+
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -385,8 +375,7 @@ namespace OopLab
         private System.Windows.Forms.Button btnCloseProfile;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnAbout;
-        private System.Windows.Forms.Panel pnlBoard;
-        private System.Windows.Forms.Button button1;
+
     }
 }
 

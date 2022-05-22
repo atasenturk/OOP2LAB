@@ -145,30 +145,29 @@
             this.label8.Size = new System.Drawing.Size(64, 20);
             this.label8.TabIndex = 7;
             this.label8.Text = "E-mail:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(185, 62);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(145, 20);
             this.txtUsername.TabIndex = 8;
+            this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsername_KeyPress);
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(185, 91);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(145, 20);
             this.txtPassword.TabIndex = 9;
-            this.txtPassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtNameSurname
             // 
             this.txtNameSurname.Location = new System.Drawing.Point(185, 120);
-            this.txtNameSurname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNameSurname.Margin = new System.Windows.Forms.Padding(2);
             this.txtNameSurname.Name = "txtNameSurname";
             this.txtNameSurname.Size = new System.Drawing.Size(145, 20);
             this.txtNameSurname.TabIndex = 10;
@@ -176,7 +175,7 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(185, 150);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(145, 20);
             this.txtPhone.TabIndex = 11;
@@ -184,16 +183,15 @@
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(185, 179);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(145, 20);
             this.txtAddress.TabIndex = 12;
-            this.txtAddress.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(185, 208);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(2);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(145, 20);
             this.txtCity.TabIndex = 13;
@@ -201,26 +199,24 @@
             // txtCountry
             // 
             this.txtCountry.Location = new System.Drawing.Point(185, 237);
-            this.txtCountry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(2);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(145, 20);
             this.txtCountry.TabIndex = 14;
-            this.txtCountry.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(185, 266);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(145, 20);
             this.txtEmail.TabIndex = 15;
-            this.txtEmail.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button1.Location = new System.Drawing.Point(256, 305);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 32);
             this.button1.TabIndex = 16;
@@ -232,13 +228,12 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(374, 91);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(184, 164);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form2
             // 
@@ -264,10 +259,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register Panel";
-            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

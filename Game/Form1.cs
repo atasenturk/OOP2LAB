@@ -31,7 +31,7 @@ namespace OopLab
             pnlMenu.BorderStyle = BorderStyle.FixedSingle;
             _currentUser = UserManager.Instance;
             lblWelcome.Text = "Welcome: " + _currentUser.Username+"!";
-            createBoard();
+
 
         }
 
@@ -325,9 +325,5 @@ namespace OopLab
             this.Enabled = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            getRandom();
-        }
     }
 }
