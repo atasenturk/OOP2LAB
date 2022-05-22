@@ -130,10 +130,22 @@
   <data name="Square_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Square_Red1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Square_Blue1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Square_Red12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Square_Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Square_Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Square_Yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Square_Red11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Triangle_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Triangle_Red1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Triangle_Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Triangle_Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Triangle_Yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Triangle_Red2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

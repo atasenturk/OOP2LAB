@@ -1,14 +1,8 @@
-﻿using System;
+﻿using OopLab;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using OopLab;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace OOPLAB_1PreLab
 {
@@ -69,7 +63,7 @@ namespace OOPLAB_1PreLab
                             };
                             if (user.Username == txtUsername.Text && user.Password == hashedPassword)
                             {
-                                currentUser=user;
+                                currentUser = user;
                                 validateLogin = true;
                             }
                         }
@@ -98,7 +92,7 @@ namespace OOPLAB_1PreLab
             {
                 if (radioUser.Checked == true)
                 {
-                    UserManager user= new UserManager(currentUser);
+                    UserManager user = new UserManager(currentUser);
                     Form game = new OopLab.Form1();
                     game.Show();
                     this.Hide();
@@ -155,7 +149,7 @@ namespace OOPLAB_1PreLab
         {
             Form2 form2 = new Form2();
             form2.Show();
-            
+
 
         }
     }

@@ -35,6 +35,10 @@ namespace OopLab
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.lblPoint = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblSourceCoord = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlBoard = new System.Windows.Forms.Panel();
             this.pnlProfile = new System.Windows.Forms.Panel();
             this.btnCloseProfile = new System.Windows.Forms.Button();
@@ -53,7 +57,6 @@ namespace OopLab
             this.label14 = new System.Windows.Forms.Label();
             this.txtPasswordFound = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-
             this.pnlTop.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlProfile.SuspendLayout();
@@ -124,7 +127,10 @@ namespace OopLab
             // 
             // pnlMain
             // 
-            this.pnlMain.Controls.Add(this.button1);
+            this.pnlMain.Controls.Add(this.lblPoint);
+            this.pnlMain.Controls.Add(this.label2);
+            this.pnlMain.Controls.Add(this.lblSourceCoord);
+            this.pnlMain.Controls.Add(this.label1);
             this.pnlMain.Controls.Add(this.pnlBoard);
             this.pnlMain.Controls.Add(this.pnlProfile);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -132,6 +138,47 @@ namespace OopLab
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1136, 599);
             this.pnlMain.TabIndex = 1;
+            // 
+            // lblPoint
+            // 
+            this.lblPoint.AutoSize = true;
+            this.lblPoint.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblPoint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPoint.Location = new System.Drawing.Point(118, 28);
+            this.lblPoint.Name = "lblPoint";
+            this.lblPoint.Size = new System.Drawing.Size(22, 23);
+            this.lblPoint.TabIndex = 8;
+            this.lblPoint.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(38, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 23);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Point: ";
+            // 
+            // lblSourceCoord
+            // 
+            this.lblSourceCoord.AutoSize = true;
+            this.lblSourceCoord.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblSourceCoord.Location = new System.Drawing.Point(924, 35);
+            this.lblSourceCoord.Name = "lblSourceCoord";
+            this.lblSourceCoord.Size = new System.Drawing.Size(0, 16);
+            this.lblSourceCoord.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(850, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Selected: ";
             // 
             // pnlBoard
             // 
@@ -160,7 +207,7 @@ namespace OopLab
             this.pnlProfile.Controls.Add(this.label14);
             this.pnlProfile.Controls.Add(this.txtPasswordFound);
             this.pnlProfile.Controls.Add(this.label15);
-            this.pnlProfile.Location = new System.Drawing.Point(730, 63);
+            this.pnlProfile.Location = new System.Drawing.Point(122, 68);
             this.pnlProfile.Name = "pnlProfile";
             this.pnlProfile.Size = new System.Drawing.Size(852, 492);
             this.pnlProfile.TabIndex = 0;
@@ -325,7 +372,7 @@ namespace OopLab
             this.label15.Size = new System.Drawing.Size(80, 17);
             this.label15.TabIndex = 33;
             this.label15.Text = "Password";
-
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,6 +391,7 @@ namespace OopLab
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             this.pnlProfile.ResumeLayout(false);
             this.pnlProfile.PerformLayout();
             this.ResumeLayout(false);
@@ -375,7 +423,11 @@ namespace OopLab
         private System.Windows.Forms.Button btnCloseProfile;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnAbout;
-
+        private System.Windows.Forms.Panel pnlBoard;
+        private System.Windows.Forms.Label lblSourceCoord;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPoint;
+        private System.Windows.Forms.Label label2;
     }
 }
 

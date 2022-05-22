@@ -103,6 +103,16 @@ namespace OopLab.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Square_Blue1 {
+            get {
+                object obj = ResourceManager.GetObject("Square_Blue1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Square_Red {
             get {
                 object obj = ResourceManager.GetObject("Square_Red", resourceCulture);
@@ -116,6 +126,36 @@ namespace OopLab.Properties {
         internal static System.Drawing.Bitmap Square_Yellow {
             get {
                 object obj = ResourceManager.GetObject("Square_Yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Triangle_Blue {
+            get {
+                object obj = ResourceManager.GetObject("Triangle_Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Triangle_Red {
+            get {
+                object obj = ResourceManager.GetObject("Triangle_Red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Triangle_Yellow {
+            get {
+                object obj = ResourceManager.GetObject("Triangle_Yellow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
