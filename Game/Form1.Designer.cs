@@ -35,6 +35,8 @@ namespace OopLab
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.lblHighestScore = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblPoint = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblSourceCoord = new System.Windows.Forms.Label();
@@ -57,8 +59,7 @@ namespace OopLab
             this.label14 = new System.Windows.Forms.Label();
             this.txtPasswordFound = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.lblHighestScore = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlProfile.SuspendLayout();
@@ -97,7 +98,7 @@ namespace OopLab
             this.lblWelcome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblWelcome.Location = new System.Drawing.Point(747, 24);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(89, 18);
+            this.lblWelcome.Size = new System.Drawing.Size(111, 25);
             this.lblWelcome.TabIndex = 2;
             this.lblWelcome.Text = "Welcome:";
             // 
@@ -129,6 +130,7 @@ namespace OopLab
             // 
             // pnlMain
             // 
+            this.pnlMain.Controls.Add(this.button2);
             this.pnlMain.Controls.Add(this.lblHighestScore);
             this.pnlMain.Controls.Add(this.label4);
             this.pnlMain.Controls.Add(this.lblPoint);
@@ -142,6 +144,29 @@ namespace OopLab
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1136, 599);
             this.pnlMain.TabIndex = 1;
+            this.pnlMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMain_Paint);
+            // 
+            // lblHighestScore
+            // 
+            this.lblHighestScore.AutoSize = true;
+            this.lblHighestScore.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblHighestScore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblHighestScore.Location = new System.Drawing.Point(166, 21);
+            this.lblHighestScore.Name = "lblHighestScore";
+            this.lblHighestScore.Size = new System.Drawing.Size(28, 29);
+            this.lblHighestScore.TabIndex = 10;
+            this.lblHighestScore.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(12, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(198, 29);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Highest Score: ";
             // 
             // lblPoint
             // 
@@ -150,7 +175,7 @@ namespace OopLab
             this.lblPoint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblPoint.Location = new System.Drawing.Point(83, 67);
             this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(22, 23);
+            this.lblPoint.Size = new System.Drawing.Size(28, 29);
             this.lblPoint.TabIndex = 8;
             this.lblPoint.Text = "0";
             // 
@@ -161,7 +186,7 @@ namespace OopLab
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(12, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 23);
+            this.label2.Size = new System.Drawing.Size(90, 29);
             this.label2.TabIndex = 7;
             this.label2.Text = "Point: ";
             // 
@@ -171,7 +196,7 @@ namespace OopLab
             this.lblSourceCoord.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblSourceCoord.Location = new System.Drawing.Point(924, 35);
             this.lblSourceCoord.Name = "lblSourceCoord";
-            this.lblSourceCoord.Size = new System.Drawing.Size(0, 16);
+            this.lblSourceCoord.Size = new System.Drawing.Size(0, 20);
             this.lblSourceCoord.TabIndex = 6;
             // 
             // label1
@@ -180,7 +205,7 @@ namespace OopLab
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(850, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.Size = new System.Drawing.Size(97, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Selected: ";
             // 
@@ -248,7 +273,7 @@ namespace OopLab
             this.txtEmailFound.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailFound.Location = new System.Drawing.Point(334, 385);
             this.txtEmailFound.Name = "txtEmailFound";
-            this.txtEmailFound.Size = new System.Drawing.Size(194, 25);
+            this.txtEmailFound.Size = new System.Drawing.Size(194, 29);
             this.txtEmailFound.TabIndex = 46;
             // 
             // label9
@@ -258,7 +283,7 @@ namespace OopLab
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
             this.label9.Location = new System.Drawing.Point(263, 385);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 17);
+            this.label9.Size = new System.Drawing.Size(61, 22);
             this.label9.TabIndex = 45;
             this.label9.Text = "Email";
             // 
@@ -267,7 +292,7 @@ namespace OopLab
             this.txtCountyFound.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountyFound.Location = new System.Drawing.Point(334, 332);
             this.txtCountyFound.Name = "txtCountyFound";
-            this.txtCountyFound.Size = new System.Drawing.Size(194, 25);
+            this.txtCountyFound.Size = new System.Drawing.Size(194, 29);
             this.txtCountyFound.TabIndex = 44;
             // 
             // label10
@@ -277,7 +302,7 @@ namespace OopLab
             this.label10.ForeColor = System.Drawing.SystemColors.Control;
             this.label10.Location = new System.Drawing.Point(245, 332);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 17);
+            this.label10.Size = new System.Drawing.Size(82, 22);
             this.label10.TabIndex = 43;
             this.label10.Text = "Country";
             // 
@@ -286,7 +311,7 @@ namespace OopLab
             this.txtCityFound.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCityFound.Location = new System.Drawing.Point(334, 278);
             this.txtCityFound.Name = "txtCityFound";
-            this.txtCityFound.Size = new System.Drawing.Size(194, 25);
+            this.txtCityFound.Size = new System.Drawing.Size(194, 29);
             this.txtCityFound.TabIndex = 42;
             // 
             // label11
@@ -296,7 +321,7 @@ namespace OopLab
             this.label11.ForeColor = System.Drawing.SystemColors.Control;
             this.label11.Location = new System.Drawing.Point(275, 278);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 17);
+            this.label11.Size = new System.Drawing.Size(46, 22);
             this.label11.TabIndex = 41;
             this.label11.Text = "City";
             // 
@@ -305,7 +330,7 @@ namespace OopLab
             this.txtAddressFound.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddressFound.Location = new System.Drawing.Point(334, 225);
             this.txtAddressFound.Name = "txtAddressFound";
-            this.txtAddressFound.Size = new System.Drawing.Size(194, 25);
+            this.txtAddressFound.Size = new System.Drawing.Size(194, 29);
             this.txtAddressFound.TabIndex = 40;
             // 
             // label12
@@ -315,7 +340,7 @@ namespace OopLab
             this.label12.ForeColor = System.Drawing.SystemColors.Control;
             this.label12.Location = new System.Drawing.Point(242, 225);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 17);
+            this.label12.Size = new System.Drawing.Size(87, 22);
             this.label12.TabIndex = 39;
             this.label12.Text = "Address";
             // 
@@ -324,7 +349,7 @@ namespace OopLab
             this.txtPhoneFound.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneFound.Location = new System.Drawing.Point(334, 175);
             this.txtPhoneFound.Name = "txtPhoneFound";
-            this.txtPhoneFound.Size = new System.Drawing.Size(194, 25);
+            this.txtPhoneFound.Size = new System.Drawing.Size(194, 29);
             this.txtPhoneFound.TabIndex = 38;
             // 
             // label13
@@ -334,7 +359,7 @@ namespace OopLab
             this.label13.ForeColor = System.Drawing.SystemColors.Control;
             this.label13.Location = new System.Drawing.Point(195, 178);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 17);
+            this.label13.Size = new System.Drawing.Size(145, 22);
             this.label13.TabIndex = 37;
             this.label13.Text = "Phone Number";
             // 
@@ -343,7 +368,7 @@ namespace OopLab
             this.txtNameFound.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameFound.Location = new System.Drawing.Point(334, 124);
             this.txtNameFound.Name = "txtNameFound";
-            this.txtNameFound.Size = new System.Drawing.Size(194, 25);
+            this.txtNameFound.Size = new System.Drawing.Size(194, 29);
             this.txtNameFound.TabIndex = 36;
             // 
             // label14
@@ -353,7 +378,7 @@ namespace OopLab
             this.label14.ForeColor = System.Drawing.SystemColors.Control;
             this.label14.Location = new System.Drawing.Point(186, 127);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(125, 17);
+            this.label14.Size = new System.Drawing.Size(156, 22);
             this.label14.TabIndex = 35;
             this.label14.Text = "Name, Surname";
             // 
@@ -362,7 +387,7 @@ namespace OopLab
             this.txtPasswordFound.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPasswordFound.Location = new System.Drawing.Point(334, 77);
             this.txtPasswordFound.Name = "txtPasswordFound";
-            this.txtPasswordFound.Size = new System.Drawing.Size(194, 25);
+            this.txtPasswordFound.Size = new System.Drawing.Size(194, 29);
             this.txtPasswordFound.TabIndex = 34;
             this.txtPasswordFound.UseSystemPasswordChar = true;
             // 
@@ -373,35 +398,25 @@ namespace OopLab
             this.label15.ForeColor = System.Drawing.SystemColors.Control;
             this.label15.Location = new System.Drawing.Point(231, 77);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(80, 17);
+            this.label15.Size = new System.Drawing.Size(100, 22);
             this.label15.TabIndex = 33;
             this.label15.Text = "Password";
             // 
-            // lblHighestScore
+            // button2
             // 
-            this.lblHighestScore.AutoSize = true;
-            this.lblHighestScore.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblHighestScore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblHighestScore.Location = new System.Drawing.Point(166, 21);
-            this.lblHighestScore.Name = "lblHighestScore";
-            this.lblHighestScore.Size = new System.Drawing.Size(22, 23);
-            this.lblHighestScore.TabIndex = 10;
-            this.lblHighestScore.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(12, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 23);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Highest Score: ";
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(1019, 554);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(105, 33);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Logout";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(1136, 661);
@@ -414,6 +429,7 @@ namespace OopLab
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Board Game";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlMain.ResumeLayout(false);
@@ -456,6 +472,7 @@ namespace OopLab
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblHighestScore;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button2;
     }
 }
 

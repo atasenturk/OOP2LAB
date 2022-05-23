@@ -212,5 +212,10 @@ namespace OopLab
             txtFirstVal.Text = Properties.Settings.Default.customFirstVal.ToString();
             txtSecondVal.Text = Properties.Settings.Default.customSecVal.ToString();
         }
+
+        private void SettingsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
