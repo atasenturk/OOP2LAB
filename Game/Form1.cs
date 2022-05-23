@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Media;
+using System.IO;
 namespace OopLab
 {
     public partial class Form1 : Form
@@ -16,7 +18,9 @@ namespace OopLab
         List<int> sourceCoord = new List<int>();
         Point destCoord = new Point();
         public int point = 0;
-
+        SoundPlayer soundPlayer = new SoundPlayer();
+        string make_move = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Game\resources\move_effect.wav";
+        string get_point = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Game\resources\get_point.wav";
         public Form1()
         {
 
@@ -42,17 +46,19 @@ namespace OopLab
                 try
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand("SELECT * FROM Scores WHERE Username = @username", connection);
+                    SqlCommand command = new SqlCommand("SELECT MAX(Score_Value) AS Score_Value FROM Scores WHERE Username = @username", connection);
                     command.Parameters.AddWithValue("@username", _currentUser.Username);
                     SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
+                    reader.Read();
+                    if (reader["Score_Value"] == null)
                     {
-                        if (Convert.ToInt32(reader["Score_Value"]) > Convert.ToInt32( lblHighestScore.Text))
-                        {
-                            lblHighestScore.Text = reader["Score_Value"].ToString();
-                        }
+                        lblHighestScore.Text = "0";
                     }
+                    else lblHighestScore.Text = reader["Score_Value"].ToString();
+                    //while (reader.Read())
+                    //{
+                    //    lblHighestScore.Text = reader["Score_Value"].ToString();
+                    //}
                     reader.Close();
                 }
                 catch (Exception ex)
@@ -176,6 +182,19 @@ namespace OopLab
             int randomColor = r.Next(0, 3); ; //0-red 1-blue -2yellow
             int randomShape = r.Next(0, 3); ; //0-square 1-triangle 3-rounded
             PictureBox pb = new PictureBox();
+            int emptySpace = 0;
+            //check how many empty space are there
+            for (int i = 0; i < gameBoard.RowCount; i++)
+            {
+                for (int j = 0; j < gameBoard.ColumnCount; j++)
+                {
+                    if (gameBoard.GetControlFromPosition(j, i) == null)
+                    {
+                        emptySpace++;
+                    }
+                }
+            }
+
             while (true)
             {
 
@@ -352,11 +371,28 @@ namespace OopLab
                     }
                 }
 
-                if (counter == 3)
+                if (emptySpace >= 3)
                 {
-                    counter = 0;
-                    break;
+                    if (counter == 3)
+                    {
+                        counter = 0;
+                        break;
+                    }
                 }
+                else if (emptySpace < 3)
+                {
+                    if (counter == emptySpace)
+                    {
+                        counter = 0;
+                        break;
+                    }
+                    else if(counter == emptySpace)
+                    {
+                        counter = 0;
+                        break;
+                    }
+                }
+
                 randomRow = r.Next(0, gameBoard.RowCount);
                 randomCol = r.Next(0, gameBoard.RowCount);
                 randomColor = r.Next(0, 3); ; //0-red 1-blue -2yellow
@@ -378,8 +414,8 @@ namespace OopLab
                     }
                 }
             }
-            MessageBox.Show("Game is over! Your point is " + point);
             addScoreToDB();
+            MessageBox.Show("Game is over! Your point is " + point);
             point = 0;
             MessageBox.Show("Restart!");
             for (int i = 0; i < gameBoard.RowCount; i++)
@@ -400,9 +436,9 @@ namespace OopLab
                 try
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand("INSERT INTO Users VALUES (@username, @score)", connection);
+                    SqlCommand command = new SqlCommand("INSERT INTO Scores VALUES (@username, @score)", connection);
                     command.Parameters.AddWithValue("@username", _currentUser.Username);
-                    command.Parameters.AddWithValue("@password", point);
+                    command.Parameters.AddWithValue("@score", point);
                     command.ExecuteNonQuery();
                 }
                 catch (Exception ex)
@@ -430,6 +466,8 @@ namespace OopLab
                 {
                     gameBoard.Controls.Add(gameBoard.GetControlFromPosition(sourceCoord[1], sourceCoord[0]), destCoord.X, destCoord.Y);
                     gameBoard.Controls.Remove(gameBoard.GetControlFromPosition(sourceCoord[1], sourceCoord[0]));
+                    SoundPlayer soundPlayer = new SoundPlayer(make_move);
+                    soundPlayer.Play();
                     checkIfGetPoint();
                 }
                 else MessageBox.Show("There is an obstacle on path!");
@@ -543,8 +581,8 @@ namespace OopLab
                 else if (Properties.Settings.Default.difficulty_level == 1) point += 3;
                 else if (Properties.Settings.Default.difficulty_level == 2) point += 5;
                 else if (Properties.Settings.Default.difficulty_level == 3) point += 2;
-                getHighestScore();
-
+                SoundPlayer soundPlayer = new SoundPlayer(get_point);
+                soundPlayer.Play();
             }
 
 
@@ -558,14 +596,15 @@ namespace OopLab
                 else if (Properties.Settings.Default.difficulty_level == 1) point += 3;
                 else if (Properties.Settings.Default.difficulty_level == 2) point += 5;
                 else if (Properties.Settings.Default.difficulty_level == 3) point += 2;
-                getHighestScore();
+                SoundPlayer soundPlayer = new SoundPlayer(get_point);
+                soundPlayer.Play();
             }
             else if (verticalCounter != 5 && horizontalCounter != 5)
             {
                 getRandom();
             }
             lblPoint.Text = point.ToString();
-
+            getHighestScore();
 
         }
 

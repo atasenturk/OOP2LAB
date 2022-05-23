@@ -1,6 +1,7 @@
 ﻿using OOPLAB_1PreLab;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -11,6 +12,7 @@ namespace OopLab
 
         private string _connectionString = "Data Source=sql5063.site4now.net;Initial Catalog=db_a855cf_ooplab; User Id = db_a855cf_ooplab_admin; Password=ataolcan123";
         List<Users> users = new List<Users>();
+        public DataGridView dtg = new DataGridView();
         public AdminManageForm()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace OopLab
             pnlDelete.Visible = false;
             pnlUpdate.Visible = false;
             pntAdd.Visible = false;
+            pnlScoreList.Visible = false;
             dataGridView1.Visible = true;
             dataGridView1.Refresh();
             dataGridView1.Dock = DockStyle.Fill;
@@ -63,6 +66,7 @@ namespace OopLab
             pnlDelete.Visible = false;
             pnlUpdate.Visible = false;
             pntAdd.Visible = true;
+            pnlScoreList.Visible = false;
             dataGridView1.Visible = false;
         }
 
@@ -118,6 +122,7 @@ namespace OopLab
             pnlDelete.Visible = false;
             pnlUpdate.Visible = true;
             pntAdd.Visible = false;
+            pnlScoreList.Visible = false;
             dataGridView1.Visible = false;
         }
 
@@ -234,6 +239,7 @@ namespace OopLab
             pnlDelete.Visible = true;
             pnlUpdate.Visible = false;
             pntAdd.Visible = false;
+            pnlScoreList.Visible = false;
             dataGridView1.Visible = false;
         }
 
@@ -246,5 +252,68 @@ namespace OopLab
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
+
+        private void btnScoreList_Click(object sender, EventArgs e)
+        {
+            pnlDelete.Visible = false;
+            pnlUpdate.Visible = false;
+            pntAdd.Visible = false;
+            pnlScoreList.Visible = true;
+            dataGridView1.Visible = false;
+        }
+
+        private void btnAscOrder_Click(object sender, EventArgs e)
+        {
+            pnlScoreList.Controls.Remove(dtg);
+            dtg.Location = new System.Drawing.Point(28, 180);
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    var dataAdapter = new SqlDataAdapter("SELECT Username, MAX(Score_Value) As [Best Score] FROM Scores GROUP BY Username ORDER BY MAX(Score_Value) ASC", connection);
+                    var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                    var ds = new DataSet();
+                    dataAdapter.Fill(ds);
+                    dtg.ReadOnly = true;
+                    dtg.DataSource = ds.Tables[0];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            pnlScoreList.Controls.Add(dtg);
+            
+
+
+        }
+
+        private void btnDescOrder_Click(object sender, EventArgs e)
+        {
+            pnlScoreList.Controls.Remove(dtg);
+            dtg.Location = new System.Drawing.Point(28, 180);
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    var dataAdapter = new SqlDataAdapter("SELECT Username, MAX(Score_Value) As [Best Score] FROM Scores GROUP BY Username ORDER BY MAX(Score_Value) DESC", connection);
+                    var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                    var ds = new DataSet();
+                    dataAdapter.Fill(ds);
+                    dtg.ReadOnly = true;
+                    dtg.DataSource = ds.Tables[0];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            pnlScoreList.Controls.Add(dtg);
+
+
+        }
+
     }
 }
