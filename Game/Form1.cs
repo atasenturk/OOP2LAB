@@ -21,7 +21,7 @@ namespace OopLab
         {
 
             InitializeComponent();
-
+            lblHighestScore.Text = "0";
             pnlMenu = new Panel();
             pnlMenu.Location = new Point(180, 100);
             pnlMenu.BackColor = Color.FromArgb(47, 47, 47);
@@ -31,7 +31,35 @@ namespace OopLab
             _currentUser = UserManager.Instance;
             lblWelcome.Text = "Welcome: " + _currentUser.Username + "!";
             createBoard();
+            getHighestScore();
 
+        }
+
+        private void getHighestScore()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("SELECT * FROM Scores WHERE Username = @username", connection);
+                    command.Parameters.AddWithValue("@username", _currentUser.Username);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        if (Convert.ToInt32(reader["Score_Value"]) > Convert.ToInt32( lblHighestScore.Text))
+                        {
+                            lblHighestScore.Text = reader["Score_Value"].ToString();
+                        }
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         public void createBoard()
@@ -351,7 +379,9 @@ namespace OopLab
                 }
             }
             MessageBox.Show("Game is over! Your point is " + point);
+            addScoreToDB();
             point = 0;
+            MessageBox.Show("Restart!");
             for (int i = 0; i < gameBoard.RowCount; i++)
             {
                 for (int j = 0; j < gameBoard.ColumnCount; j++)
@@ -361,6 +391,25 @@ namespace OopLab
             }
             getRandom();
             gameBoard.Refresh();
+        }
+
+        private void addScoreToDB()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("INSERT INTO Users VALUES (@username, @score)", connection);
+                    command.Parameters.AddWithValue("@username", _currentUser.Username);
+                    command.Parameters.AddWithValue("@password", point);
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         private void clickPicture(object sender, MouseEventArgs e)
@@ -494,6 +543,7 @@ namespace OopLab
                 else if (Properties.Settings.Default.difficulty_level == 1) point += 3;
                 else if (Properties.Settings.Default.difficulty_level == 2) point += 5;
                 else if (Properties.Settings.Default.difficulty_level == 3) point += 2;
+                getHighestScore();
 
             }
 
@@ -508,6 +558,7 @@ namespace OopLab
                 else if (Properties.Settings.Default.difficulty_level == 1) point += 3;
                 else if (Properties.Settings.Default.difficulty_level == 2) point += 5;
                 else if (Properties.Settings.Default.difficulty_level == 3) point += 2;
+                getHighestScore();
             }
             else if (verticalCounter != 5 && horizontalCounter != 5)
             {

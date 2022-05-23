@@ -57,6 +57,8 @@ namespace OopLab
             this.label14 = new System.Windows.Forms.Label();
             this.txtPasswordFound = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.lblHighestScore = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlProfile.SuspendLayout();
@@ -127,6 +129,8 @@ namespace OopLab
             // 
             // pnlMain
             // 
+            this.pnlMain.Controls.Add(this.lblHighestScore);
+            this.pnlMain.Controls.Add(this.label4);
             this.pnlMain.Controls.Add(this.lblPoint);
             this.pnlMain.Controls.Add(this.label2);
             this.pnlMain.Controls.Add(this.lblSourceCoord);
@@ -144,7 +148,7 @@ namespace OopLab
             this.lblPoint.AutoSize = true;
             this.lblPoint.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblPoint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPoint.Location = new System.Drawing.Point(118, 28);
+            this.lblPoint.Location = new System.Drawing.Point(83, 67);
             this.lblPoint.Name = "lblPoint";
             this.lblPoint.Size = new System.Drawing.Size(22, 23);
             this.lblPoint.TabIndex = 8;
@@ -155,7 +159,7 @@ namespace OopLab
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(38, 28);
+            this.label2.Location = new System.Drawing.Point(12, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 23);
             this.label2.TabIndex = 7;
@@ -373,6 +377,28 @@ namespace OopLab
             this.label15.TabIndex = 33;
             this.label15.Text = "Password";
             // 
+            // lblHighestScore
+            // 
+            this.lblHighestScore.AutoSize = true;
+            this.lblHighestScore.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblHighestScore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblHighestScore.Location = new System.Drawing.Point(166, 21);
+            this.lblHighestScore.Name = "lblHighestScore";
+            this.lblHighestScore.Size = new System.Drawing.Size(22, 23);
+            this.lblHighestScore.TabIndex = 10;
+            this.lblHighestScore.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(12, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(159, 23);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Highest Score: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -428,6 +454,8 @@ namespace OopLab
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblHighestScore;
+        private System.Windows.Forms.Label label4;
     }
 }
 
