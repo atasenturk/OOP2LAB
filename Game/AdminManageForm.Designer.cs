@@ -82,17 +82,26 @@ namespace OopLab
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnScoreList = new System.Windows.Forms.Button();
+            this.pnlScoreList = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnAscOrder = new System.Windows.Forms.Button();
+            this.btnDescOrder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlDelete.SuspendLayout();
             this.pnlUpdate.SuspendLayout();
             this.pntAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pnlScoreList.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnScoreList);
             this.panel1.Controls.Add(this.btnDeleteUser);
             this.panel1.Controls.Add(this.btnUpdateUser);
             this.panel1.Controls.Add(this.btnAddUser);
@@ -162,6 +171,7 @@ namespace OopLab
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.pnlMain.Controls.Add(this.pnlScoreList);
             this.pnlMain.Controls.Add(this.pnlDelete);
             this.pnlMain.Controls.Add(this.pnlUpdate);
             this.pnlMain.Controls.Add(this.pntAdd);
@@ -673,6 +683,86 @@ namespace OopLab
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Visible = false;
             // 
+            // btnScoreList
+            // 
+            this.btnScoreList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnScoreList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScoreList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnScoreList.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnScoreList.Location = new System.Drawing.Point(0, 200);
+            this.btnScoreList.Name = "btnScoreList";
+            this.btnScoreList.Size = new System.Drawing.Size(138, 50);
+            this.btnScoreList.TabIndex = 5;
+            this.btnScoreList.Text = "Score List";
+            this.btnScoreList.UseVisualStyleBackColor = true;
+            this.btnScoreList.Click += new System.EventHandler(this.btnScoreList_Click);
+            // 
+            // pnlScoreList
+            // 
+            this.pnlScoreList.Controls.Add(this.btnDescOrder);
+            this.pnlScoreList.Controls.Add(this.btnAscOrder);
+            this.pnlScoreList.Controls.Add(this.panel6);
+            this.pnlScoreList.Controls.Add(this.panel7);
+            this.pnlScoreList.Controls.Add(this.label18);
+            this.pnlScoreList.Location = new System.Drawing.Point(31, 33);
+            this.pnlScoreList.Name = "pnlScoreList";
+            this.pnlScoreList.Size = new System.Drawing.Size(593, 563);
+            this.pnlScoreList.TabIndex = 4;
+            this.pnlScoreList.Visible = false;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel6.Location = new System.Drawing.Point(28, 37);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(518, 3);
+            this.panel6.TabIndex = 33;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel7.Location = new System.Drawing.Point(28, 327);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(518, 3);
+            this.panel7.TabIndex = 32;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.Control;
+            this.label18.Location = new System.Drawing.Point(25, 66);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(125, 17);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Select Order By";
+            // 
+            // btnAscOrder
+            // 
+            this.btnAscOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAscOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnAscOrder.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAscOrder.Location = new System.Drawing.Point(28, 98);
+            this.btnAscOrder.Name = "btnAscOrder";
+            this.btnAscOrder.Size = new System.Drawing.Size(138, 50);
+            this.btnAscOrder.TabIndex = 35;
+            this.btnAscOrder.Text = "Asc Order";
+            this.btnAscOrder.UseVisualStyleBackColor = true;
+            this.btnAscOrder.Click += new System.EventHandler(this.btnAscOrder_Click);
+            // 
+            // btnDescOrder
+            // 
+            this.btnDescOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDescOrder.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDescOrder.Location = new System.Drawing.Point(176, 98);
+            this.btnDescOrder.Name = "btnDescOrder";
+            this.btnDescOrder.Size = new System.Drawing.Size(138, 50);
+            this.btnDescOrder.TabIndex = 36;
+            this.btnDescOrder.Text = "Desc Order";
+            this.btnDescOrder.UseVisualStyleBackColor = true;
+            this.btnDescOrder.Click += new System.EventHandler(this.btnDescOrder_Click);
+            // 
             // AdminManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -693,6 +783,8 @@ namespace OopLab
             this.pntAdd.ResumeLayout(false);
             this.pntAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.pnlScoreList.ResumeLayout(false);
+            this.pnlScoreList.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -752,5 +844,12 @@ namespace OopLab
         private System.Windows.Forms.Button btnDeleteComplete;
         private System.Windows.Forms.TextBox txtDeleteUsername;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btnScoreList;
+        private System.Windows.Forms.Panel pnlScoreList;
+        private System.Windows.Forms.Button btnDescOrder;
+        private System.Windows.Forms.Button btnAscOrder;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label18;
     }
 }
