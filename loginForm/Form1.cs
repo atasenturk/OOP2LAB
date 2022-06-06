@@ -93,7 +93,7 @@ namespace OOPLAB_1PreLab
                 if (radioUser.Checked == true)
                 {
                     UserManager user = new UserManager(currentUser);
-                    Form game = new OopLab.Form1();
+                    Form game = new OopLab.ConnectForm();
                     game.Show();
                     this.Hide();
                 }

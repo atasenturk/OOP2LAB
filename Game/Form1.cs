@@ -7,10 +7,15 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Media;
 using System.IO;
+using System.Net.Sockets;
+using System.ComponentModel;
+using System.Text;
+
 namespace OopLab
 {
     public partial class Form1 : Form
     {
+        private Socket sock;
         Panel pnlMenu;
         private string _connectionString = "Data Source=sql5063.site4now.net;Initial Catalog=db_a855cf_ooplab; User Id = db_a855cf_ooplab_admin; Password=ataolcan123";
         private Users _currentUser;
@@ -21,10 +26,49 @@ namespace OopLab
         SoundPlayer soundPlayer = new SoundPlayer();
         string make_move = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Game\resources\move_effect.wav";
         string get_point = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Game\resources\get_point.wav";
-        public Form1()
+        private BackgroundWorker MessageReceiver = new BackgroundWorker();
+        private TcpListener server = null;
+        private TcpClient client;
+        private bool isSinglePlayer;
+        public Form1(bool isSingle, bool isHost = false, int portNum = 0, string IP = null)
         {
-
             InitializeComponent();
+
+            isSinglePlayer = isSingle;
+            if (!isSinglePlayer)
+            {
+                lblMsg.Text = "Your turn!";
+                MessageReceiver.DoWork += MessageReceiver_DoWork;
+                CheckForIllegalCrossThreadCalls = false;
+                if (isHost)
+                {
+                    server = new TcpListener(System.Net.IPAddress.Any, 5732);
+                    server.Start();
+                    sock = server.AcceptSocket();
+                }
+
+                else
+                {
+                    try
+                    {
+                        client = new TcpClient(IP, portNum);
+                        sock = client.Client;
+                        MessageReceiver.RunWorkerAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        Close();
+                        throw;
+                    }
+                }
+                pnlMultiPlayer.Visible = true;
+            }
+            else pnlSinglePlayer.Visible = true;
+
+
+
+
             lblHighestScore.Text = "0";
             pnlMenu = new Panel();
             pnlMenu.Location = new Point(180, 100);
@@ -36,6 +80,168 @@ namespace OopLab
             lblWelcome.Text = "Welcome: " + _currentUser.Username + "!";
             createBoard();
             getHighestScore();
+
+        }
+
+        private void MessageReceiver_DoWork(object sender, DoWorkEventArgs e)
+        {
+            lblMsg.Text = "Opponent's turn!";
+            ReceiveMove();
+            lblMsg.Text = "Your turn!";
+
+        }
+
+
+
+        int[] arr;
+        private void ReceiveMove()
+        {
+            byte[] buffer = new byte[1024];
+            sock.Receive(buffer);
+            message.Text = Encoding.UTF8.GetString(buffer);
+            string phrase = message.Text;
+            
+            string[] words = phrase.Split(' ');
+            foreach (var item in words)
+            {
+                Console.WriteLine(item);
+            }
+
+            words = words.Where((val, idx) => idx != 13).ToArray();
+            //if (words.Length == 13)
+            //{
+            //    PictureBox pb = new PictureBox();
+            //    if (Convert.ToInt32(words[2])== 0)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Red,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Red"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[0]), Convert.ToInt32(words[1]));
+            //    }
+
+            //    else if (Convert.ToInt32(words[2]) == 1)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Blue,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Blue"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[0]), Convert.ToInt32(words[1]));
+            //    }
+
+            //    else if (Convert.ToInt32(words[2]) == 2)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Yellow,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Yellow"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[0]), Convert.ToInt32(words[1]));
+            //    }
+
+            //    if (Convert.ToInt32(words[5]) == 0)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Red,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Red"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[3]), Convert.ToInt32(words[4]));
+            //    }
+
+
+            //    else if (Convert.ToInt32(words[5]) == 1)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Blue,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Blue"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[3]), Convert.ToInt32(words[4]));
+            //    }
+
+            //    else if (Convert.ToInt32(words[5]) == 2)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Yellow,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Yellow"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[3]), Convert.ToInt32(words[4]));
+            //    }
+
+            //    if (Convert.ToInt32(words[8]) == 0)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Red,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Red"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[6]), Convert.ToInt32(words[7]));
+            //    }
+
+            //    else if (Convert.ToInt32(words[8]) == 1)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Blue,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Blue"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[6]), Convert.ToInt32(words[7]));
+            //    }
+
+            //    else if (Convert.ToInt32(words[8]) == 2)
+            //    {
+            //        pb = new PictureBox()
+            //        {
+            //            Image = Properties.Resources.Square_Blue,
+            //            SizeMode = PictureBoxSizeMode.StretchImage,
+            //            Tag = "Square_Blue"
+            //        };
+            //        pb.MouseClick += new MouseEventHandler(clickPicture);
+            //        gameBoard.Controls.Add(pb, Convert.ToInt32(words[6]), Convert.ToInt32(words[7]));
+            //    }
+
+
+
+
+
+                arr = new int[4];
+                arr[0] = Convert.ToInt32(words[9]);
+                arr[1] = Convert.ToInt32(words[10]);
+                arr[2] = Convert.ToInt32(words[11]);
+                arr[3] = Convert.ToInt32(words[12]);
+                gameBoard.Controls.Add(gameBoard.GetControlFromPosition(arr[0], arr[1]), arr[2], arr[3]);
+                gameBoard.Controls.Remove(gameBoard.GetControlFromPosition(arr[0], arr[1]));
+
+
+            SoundPlayer soundPlayer = new SoundPlayer(make_move);
+            soundPlayer.Play();
+
+        }
+
+        private void ReceiveRandoms(string[] words)
+        {
+
+
 
         }
 
@@ -70,73 +276,117 @@ namespace OopLab
 
         public void createBoard()
         {
-            if(Properties.Settings.Default.red == false && Properties.Settings.Default.blue == false && Properties.Settings.Default.yellow == false
-                && Properties.Settings.Default.square == false && Properties.Settings.Default.rounded == false && Properties.Settings.Default.triangle == false)
+            if (isSinglePlayer)
             {
+                if (Properties.Settings.Default.red == false && Properties.Settings.Default.blue == false && Properties.Settings.Default.yellow == false
+                    && Properties.Settings.Default.square == false && Properties.Settings.Default.rounded == false && Properties.Settings.Default.triangle == false)
+                {
+                    Properties.Settings.Default.red = true;
+                    Properties.Settings.Default.blue = true;
+                    Properties.Settings.Default.triangle = true;
+                    Properties.Settings.Default.square = true;
+                }
+
+
+                //board size
+                if (Properties.Settings.Default.difficulty_level == -1)
+                {
+                    Properties.Settings.Default.difficulty_level = 0;
+                }
+                gameBoard = new TableLayoutPanel();
+                if (Properties.Settings.Default.difficulty_level == 0)
+                {
+                    gameBoard.RowCount = 15;
+                    gameBoard.ColumnCount = 15;
+                }
+                else if (Properties.Settings.Default.difficulty_level == 1)
+                {
+                    gameBoard.RowCount = 9;
+                    gameBoard.ColumnCount = 9;
+                }
+                else if (Properties.Settings.Default.difficulty_level == 2)
+                {
+                    gameBoard.RowCount = 6;
+                    gameBoard.ColumnCount = 6;
+                }
+                else if (Properties.Settings.Default.difficulty_level == 3)
+                {
+                    gameBoard.RowCount = Properties.Settings.Default.customFirstVal;
+                    gameBoard.ColumnCount = Properties.Settings.Default.customSecVal;
+                }
+
+
+                //randomless
+
+
+
+
+                gameBoard.Size = new Size(580, 580);
+                gameBoard.Visible = true;
+                gameBoard.Dock = DockStyle.Fill;
+                gameBoard.AutoScroll = true;
+                pnlBoard.Controls.Add(gameBoard);
+                pnlBoard.AutoSize = true;
+                pnlSinglePlayer.Controls.Add(pnlBoard);
+
+                for (int i = 0; i < gameBoard.RowCount; i++)
+                {
+                    gameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, (float)100 / gameBoard.RowCount));
+                }
+
+                for (int i = 0; i < gameBoard.ColumnCount; i++)
+                {
+                    gameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, (float)100 / gameBoard.ColumnCount));
+                }
+
+                gameBoard.MouseClick += new MouseEventHandler(clickOnSpace);
+                getRandom();
+
+
+                gameBoard.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
+                gameBoard.CellPaint += new TableLayoutCellPaintEventHandler(gameBoard_CellPaint);
+            }
+
+            else
+            {
+                gameBoard = new TableLayoutPanel();
+
                 Properties.Settings.Default.red = true;
                 Properties.Settings.Default.blue = true;
+                Properties.Settings.Default.yellow = true;
                 Properties.Settings.Default.triangle = true;
-                Properties.Settings.Default.square = true;
-            }
 
-
-            //board size
-            if (Properties.Settings.Default.difficulty_level == -1)
-            {
-                Properties.Settings.Default.difficulty_level = 0;
-            }
-            gameBoard = new TableLayoutPanel();
-            if (Properties.Settings.Default.difficulty_level == 0)
-            {
-                gameBoard.RowCount = 15;
-                gameBoard.ColumnCount = 15;
-            }
-            else if (Properties.Settings.Default.difficulty_level == 1)
-            {
                 gameBoard.RowCount = 9;
                 gameBoard.ColumnCount = 9;
-            }
-            else if (Properties.Settings.Default.difficulty_level == 2)
-            {
-                gameBoard.RowCount = 6;
-                gameBoard.ColumnCount = 6;
-            }
-            else if (Properties.Settings.Default.difficulty_level == 3)
-            {
-                gameBoard.RowCount = Properties.Settings.Default.customFirstVal;
-                gameBoard.ColumnCount = Properties.Settings.Default.customSecVal;
-            }
 
 
-            //randomless
+                gameBoard.Size = new Size(580, 580);
+                gameBoard.Visible = true;
+                gameBoard.Dock = DockStyle.Fill;
+                gameBoard.AutoScroll = true;
+                pnlBoardMulti.Controls.Add(gameBoard);
+                pnlBoardMulti.AutoSize = true;
+                pnlMultiPlayer.Controls.Add(pnlBoardMulti);
+                pnlMultiPlayer.BringToFront();
+
+                for (int i = 0; i < gameBoard.RowCount; i++)
+                {
+                    gameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, (float)100 / gameBoard.RowCount));
+                }
+
+                for (int i = 0; i < gameBoard.ColumnCount; i++)
+                {
+                    gameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, (float)100 / gameBoard.ColumnCount));
+                }
+
+                gameBoard.MouseClick += new MouseEventHandler(clickOnSpace);
+                getRandom();
 
 
-
-
-            gameBoard.Size = new Size(580, 580);
-            gameBoard.Visible = true;
-            gameBoard.Dock = DockStyle.Fill;
-            gameBoard.AutoScroll = true;
-            pnlBoard.Controls.Add(gameBoard);
-            pnlBoard.AutoSize = true;
-            pnlMain.Controls.Add(pnlBoard);
-
-            for (int i = 0; i < gameBoard.RowCount; i++)
-            {
-                gameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, (float)100 / gameBoard.RowCount));
+                gameBoard.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
+                gameBoard.CellPaint += new TableLayoutCellPaintEventHandler(gameBoard_CellPaint);
             }
 
-            for (int i = 0; i < gameBoard.ColumnCount; i++)
-            {
-                gameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, (float)100 / gameBoard.ColumnCount));
-            }
-
-            gameBoard.MouseClick += new MouseEventHandler(clickOnSpace);
-            getRandom();
-
-
-            gameBoard.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
-            gameBoard.CellPaint += new TableLayoutCellPaintEventHandler(gameBoard_CellPaint);
         }
 
         private void clickOnSpace(object sender, MouseEventArgs e)
@@ -175,12 +425,20 @@ namespace OopLab
 
         private void getRandom()
         {
+            if (!isSinglePlayer)
+            {
+                Properties.Settings.Default.square = false;
+                Properties.Settings.Default.triangle = true;
+                Properties.Settings.Default.rounded = false;
+
+            }
             Random r = new Random();
             int randomRow = r.Next(0, gameBoard.RowCount);
             int randomCol = r.Next(0, gameBoard.ColumnCount);
             int counter = 0;
             int randomColor = r.Next(0, 3); ; //0-red 1-blue -2yellow
             int randomShape = r.Next(0, 3); ; //0-square 1-triangle 3-rounded
+            
             PictureBox pb = new PictureBox();
             int emptySpace = 0;
             //check how many empty space are there
@@ -194,7 +452,6 @@ namespace OopLab
                     }
                 }
             }
-
             while (true)
             {
 
@@ -213,6 +470,7 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage += randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
@@ -232,6 +490,7 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage += randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
@@ -251,6 +510,7 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage += randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
@@ -270,6 +530,7 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage += randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
@@ -289,6 +550,7 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage += randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
@@ -308,6 +570,7 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage += randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
@@ -327,6 +590,7 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage += randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
@@ -346,6 +610,7 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage += randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
@@ -365,12 +630,13 @@ namespace OopLab
                         pb.MouseClick += new MouseEventHandler(clickPicture);
                         if (gameBoard.GetControlFromPosition(randomCol, randomRow) == null)
                         {
+                            completeMessage +=  randomCol + " " + randomRow + " " + randomColor + " ";
                             gameBoard.Controls.Add(pb, randomCol, randomRow);
                             counter++;
                         }
                     }
                 }
-
+                
                 if (emptySpace >= 3)
                 {
                     if (counter == 3)
@@ -383,27 +649,23 @@ namespace OopLab
                 {
                     if (counter == emptySpace)
                     {
-                        counter = 0;
-                        break;
-                    }
-                    else if(counter == emptySpace)
-                    {
+
                         counter = 0;
                         break;
                     }
                 }
-
                 randomRow = r.Next(0, gameBoard.RowCount);
                 randomCol = r.Next(0, gameBoard.RowCount);
                 randomColor = r.Next(0, 3); ; //0-red 1-blue -2yellow
                 randomShape = r.Next(0, 3); ; //0-square 1-triangle 3-rounded
             }
+
             checkIfGameEnd();
 
         }
-
         private void checkIfGameEnd()
         {
+
             for (int i = 0; i < gameBoard.RowCount; i++)
             {
                 for (int j = 0; j < gameBoard.ColumnCount; j++)
@@ -425,6 +687,7 @@ namespace OopLab
                     gameBoard.Controls.Remove(gameBoard.GetControlFromPosition(j, i));
                 }
             }
+
             getRandom();
             gameBoard.Refresh();
         }
@@ -458,13 +721,26 @@ namespace OopLab
             }
         }
 
+        string completeMessage = string.Empty;
         private void makeMove()
         {
             if (destCoord != null && sourceCoord.Count != 0)
             {
                 if (minDistance() != -1)
                 {
+
                     gameBoard.Controls.Add(gameBoard.GetControlFromPosition(sourceCoord[1], sourceCoord[0]), destCoord.X, destCoord.Y);
+                    if (!isSinglePlayer)
+                    {
+                        string messageToSend = sourceCoord[1].ToString() + " " + sourceCoord[0].ToString() + " " + destCoord.X.ToString() + " " + destCoord.Y.ToString();
+                        completeMessage += messageToSend + " ";
+                        byte[] message = Encoding.UTF8.GetBytes(completeMessage);
+                        sock.Send(message);
+                        if (!MessageReceiver.IsBusy)
+                            MessageReceiver.RunWorkerAsync();
+                        completeMessage = string.Empty;
+
+                    }
                     gameBoard.Controls.Remove(gameBoard.GetControlFromPosition(sourceCoord[1], sourceCoord[0]));
                     SoundPlayer soundPlayer = new SoundPlayer(make_move);
                     soundPlayer.Play();
@@ -769,5 +1045,29 @@ namespace OopLab
         {
             getRandom();
         }
+
+
+
+        private void btnSingleplayer_Click(object sender, EventArgs e)
+        {
+            pnlSinglePlayer.Visible = true;
+        }
+
+
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(1);
+            MessageReceiver.WorkerSupportsCancellation = true;
+            MessageReceiver.CancelAsync();
+            if(server != null)
+            {
+                server.Stop();
+            }
+
+        }
+
+
+
     }
 }
